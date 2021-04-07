@@ -1,13 +1,17 @@
 package medops;
 
-class Sale{
+class Transaction {
     Medicine medicine;
     int qty;
 }
 
-public class SalesRecord {
+public class TransactionRecord {
     private int employeeId;
-    private Sale[] sale;
+    private Transaction[] transactions;
     private String timeOfPurchase;
     private int totalPrice;
+
+    TransactionRecord(){
+
+    }
 }
