@@ -5,11 +5,11 @@ import javax.swing.*;
 public class EmployeeScreen {
     boolean isManager;
     int width = 1000;
-    int height = 700;
+    int height = 600;
     int padding = 20;
 
     EmployeeScreen() {
-        JFrame employeeScreen = new JFrame();
+        JFrame employeeScreen = new JFrame(JScrollPane.VERTICAL_SCROLLBAR);
         JTextArea ta = new JTextArea(200, 200);
         JTabbedPane tp = new JTabbedPane();
         tp.setBounds(padding, padding, width, height);

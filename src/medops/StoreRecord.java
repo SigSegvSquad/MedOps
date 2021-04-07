@@ -538,7 +538,7 @@ public class StoreRecord {
 
     void loadStoreRecord() {
         try {
-            FileReader usersDataFileObj = new FileReader(System.getProperty("user.dir") + File.separator + "database/storeRecord");
+            FileReader usersDataFileObj = new FileReader(System.getProperty("user.dir") + File.separator + "database/storeRecord.json");
             JSONObject storeData = (JSONObject) new JSONTokener(getFileString(usersDataFileObj)).nextValue();
             this.name = (String) storeData.get("name");
             this.balance = (int) storeData.get("balance");
