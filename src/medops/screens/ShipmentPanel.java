@@ -13,11 +13,18 @@ public class ShipmentPanel {
     private JTextArea generatedReceipt;
     private JButton generateRecieptButton;
     private JTextField textField1;
-    ShipmentPanel(){
+
+    ShipmentPanel() {
         addMedicineButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                SelectMedicine selectMedicine = new SelectMedicine();
 
+                JFrame selectMedicineFrame = new JFrame();
+                selectMedicineFrame.setTitle("Select Medicine");
+                selectMedicineFrame.setContentPane(selectMedicine.panel);
+                selectMedicineFrame.setSize(400, 200);
+                selectMedicineFrame.setVisible(true);
             }
         });
 
