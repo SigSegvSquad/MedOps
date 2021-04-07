@@ -8,5 +8,10 @@
     "password": "yodadagay",
     "name": "Im Gae",
     "salary": 10000
+  },
+  "a": {
+    "password": "a",
+    "name": "Test Employee",
+    "salary": 10000
   }
 }

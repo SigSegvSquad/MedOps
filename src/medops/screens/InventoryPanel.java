@@ -2,6 +2,7 @@ package medops.screens;
 
 import javax.swing.*;
 
-public class InventoryPanel extends JPanel {
-
+public class InventoryPanel {
+    public JPanel inventoryPanel;
+    private JList list1;
 }
