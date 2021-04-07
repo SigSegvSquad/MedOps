@@ -8,11 +8,17 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
+import org.json.JSONException;
+import org.json.JSONTokener;
+import org.json.JSONObject;
 
 public class LoginScreen {
     JFrame frame;
-
     LoginScreen() {
         frame = new JFrame("Demo application");
         frame.setSize(300, 150);
@@ -25,16 +31,45 @@ public class LoginScreen {
         frame.setVisible(true);
     }
 
-    private void verifyLoginInfo(String username, String password){
-        boolean everythingChecksOut = true;
-        System.out.println("Username: "+username);
-        System.out.println("Password: "+password);
+    private String getFileString(FileReader fileObj) throws IOException {
+        String output="";
+        int i;
+        while((i=fileObj.read()) != -1){
+            output += (char)i;
+        }
+        return output;
+    }
 
+    private void verifyLoginInfo(String username, String password) {
+        boolean everythingChecksOut = false;
         //do stuff
+        try {
+            FileReader usersDataFileObj = new FileReader(System.getProperty("user.dir")+ File.separator+"database/users.json");
 
-        if(everythingChecksOut) {
-            frame.setVisible(false);
-            EmployeeScreen employeeScreen = new EmployeeScreen();
+            JSONObject usersData =(JSONObject) new JSONTokener(getFileString(usersDataFileObj)).nextValue();
+
+            try {
+                String userDataStr = usersData.get(username).toString();
+                JSONObject userData = (JSONObject) new JSONTokener(userDataStr).nextValue();
+
+                if(userData.get("password").toString().equals(password)) {
+                    everythingChecksOut = true;
+                    if (everythingChecksOut) {
+                        frame.setVisible(false);
+                        EmployeeScreen employeeScreen = new EmployeeScreen();
+
+                    }
+                }
+                else{
+                    System.out.println("Wrong Password");
+                }
+            }
+            catch (JSONException e) {
+                System.out.println("Username not found!");
+            }
+        }
+        catch(IOException e){
+            System.out.println("Failed to read!");
         }
     }
 
@@ -69,7 +104,7 @@ public class LoginScreen {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                verifyLoginInfo(userText.getName(), String.valueOf(passwordText.getPassword()));
+                verifyLoginInfo(userText.getText(), String.valueOf(passwordText.getPassword()));
             }
         });
     }

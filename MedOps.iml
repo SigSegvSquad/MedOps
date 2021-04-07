@@ -7,7 +7,7 @@
     </content>
     <orderEntry type="jdk" jdkName="15" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="org.json:json:20210307" level="project" />
-    <orderEntry type="library" exported="" name="org.json:json:20090211" level="project" />
+    <orderEntry type="library" exported="" name="org.json:json:20210307" level="project" />
+    <orderEntry type="library" name="org.json:json:20090211" level="project" />
   </component>
 </module>
