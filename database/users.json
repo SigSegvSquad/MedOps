@@ -1,0 +1,12 @@
+{
+  "admin": {
+    "password": "yomamagay",
+    "name": "You Gae",
+    "salary": 20000
+  },
+  "op":{
+    "password": "yodadagay",
+    "name": "Im Gae",
+    "salary": 10000
+  }
+}
