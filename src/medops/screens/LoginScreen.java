@@ -8,8 +8,11 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class LoginScreen {
+    private String username;
+    private String password;
+
     LoginScreen() {
-        JFrame frame = new JFrame("Demo application");
+        JFrame frame = new JFrame("Login");
         frame.setSize(300, 150);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -18,6 +21,11 @@ public class LoginScreen {
         placeComponents(panel);
 
         frame.setVisible(true);
+    }
+
+    public boolean isLoggedIn(){
+        //do your thing here popu
+        return true;
     }
 
     private static void placeComponents(JPanel panel) {
@@ -42,9 +50,5 @@ public class LoginScreen {
         JButton loginButton = new JButton("login");
         loginButton.setBounds(10, 80, 80, 25);
         panel.add(loginButton);
-
-        JButton registerButton = new JButton("register");
-        registerButton.setBounds(180, 80, 80, 25);
-        panel.add(registerButton);
     }
 }
