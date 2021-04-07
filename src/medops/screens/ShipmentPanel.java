@@ -12,7 +12,7 @@ public class ShipmentPanel {
     private JButton addMedicineButton;
     private JTextArea generatedReceipt;
     private JButton generateRecieptButton;
-    private JTextField textField1;
+    private JTextArea textArea1;
 
     ShipmentPanel() {
         addMedicineButton.addActionListener(new ActionListener() {

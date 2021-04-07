@@ -11,7 +11,7 @@ public class SalesPanel {
     private JButton cancelTransactionButton;
     private JTextArea generatedReceipt;
     private JButton generateRecieptButton;
-    private JTextField textField1;
+    private JTextArea textArea1;
 
     public SalesPanel() {
         addMedicineButton.addActionListener(new ActionListener() {
