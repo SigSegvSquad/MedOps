@@ -1,17 +1,23 @@
 {
   "admin": {
+    "id": 0,
     "password": "yomamagay",
     "name": "You Gae",
-    "salary": 20000
+    "salary": 20000,
+    "is_admin": true
   },
   "op":{
+    "id": 1,
     "password": "yodadagay",
     "name": "Im Gae",
-    "salary": 10000
+    "salary": 10000,
+    "is_admin": false
   },
   "a": {
+    "id": 2,
     "password": "a",
     "name": "Test Employee",
-    "salary": 10000
+    "salary": 10000,
+    "is_admin": false
   }
 }

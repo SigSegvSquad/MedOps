@@ -1,0 +1,64 @@
+{
+  "medicineArray": [
+    {
+      "id": 0,
+      "name": "AZINET TAB",
+      "price": 69,
+      "stock": 100
+    },
+    {
+      "id": 1,
+      "name": "MAYCORIL DX",
+      "price": 83,
+      "stock": 50
+    },
+    {
+      "id": 2,
+      "name": "HISTACURE MD TABLETS",
+      "price": 50,
+      "stock": 300
+    },
+    {
+      "id": 3,
+      "name": "Amodiaquine",
+      "price": 100,
+      "stock": 100
+    },
+    {
+      "id": 4,
+      "name": "Betamethasone",
+      "price": 120,
+      "stock": 30
+    },
+    {
+      "id": 5,
+      "name": "Tolnaftate",
+      "price": 60,
+      "stock": 200
+    },
+    {
+      "id": 6,
+      "name": "Verapamil",
+      "price": 400,
+      "stock": 50
+    },
+    {
+      "id": 7,
+      "name": "Riboflavin",
+      "price": 60,
+      "stock": 70
+    },
+    {
+      "id": 8,
+      "name": "Vit C TAB",
+      "price": 49,
+      "stock": 100
+    },
+    {
+      "id": 9,
+      "name": "Aminophylline",
+      "price": 99,
+      "stock": 100
+    }
+  ]
+}

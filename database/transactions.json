@@ -1,0 +1,11 @@
+{
+  "transactionsArray": [
+    {
+      "id": 0,
+      "type": "sell",
+      "medicines": [{"name":"MAYCORIL DX","qty":4},{"name":"AZINET TAB","qty":3}],
+      "amount": 539,
+      "employeeId": 1
+    }
+  ]
+}
