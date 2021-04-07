@@ -1,7 +1,7 @@
 package medops;
 
 class Sale{
-    String medicineName;
+    Medicine medicine;
     int qty;
 }
 
