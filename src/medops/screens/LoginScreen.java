@@ -11,8 +11,10 @@ import java.awt.event.ActionListener;
 
 
 public class LoginScreen {
+    JFrame frame;
+
     LoginScreen() {
-        JFrame frame = new JFrame("Demo application");
+        frame = new JFrame("Demo application");
         frame.setSize(300, 150);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -23,15 +25,21 @@ public class LoginScreen {
         frame.setVisible(true);
     }
 
-    private static void verifyLoginInfo(String username, String password){
+    private void verifyLoginInfo(String username, String password){
+        boolean everythingChecksOut = true;
         System.out.println("Username: "+username);
         System.out.println("Password: "+password);
 
+        //do stuff
 
-
+        if(everythingChecksOut) {
+            frame.setVisible(false);
+            EmployeeScreen employeeScreen = new EmployeeScreen();
+        }
     }
 
-    private static void placeComponents(JPanel panel) {
+
+    private void placeComponents(JPanel panel) {
         panel.setLayout(null);
 
         JLabel userLabel = new JLabel("User");
