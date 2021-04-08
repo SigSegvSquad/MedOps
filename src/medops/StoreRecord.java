@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+
 public class StoreRecord {
     public String name;
     public int balance;
@@ -499,6 +500,7 @@ public class StoreRecord {
                     managerList.add(new Manager((int) employee.get("id"), (String) employee.get("name"), (String) employee.get("password"), (int) employee.get("salary")));
                 }
                 employeeList.add(new Employee((int) employee.get("id"), (String) employee.get("name"), (String) employee.get("password"), (int) employee.get("salary")));
+                System.out.println(employee.get("name"));
             });
         } catch (IOException e) {
             System.out.println("wrong path nigga");
@@ -529,7 +531,7 @@ public class StoreRecord {
 
             for (int i = 0; i < transactionArray.length(); i++) {
                 JSONObject transaction = transactionArray.getJSONObject(i);
-                System.out.println(transaction.get("employeeId"));
+                transactionRecordList.add(new TransactionRecord((int)transaction.get("id"),(String)transaction.get("type"),(JSONArray)transaction.get("medicines"),(String)transaction.get("time"),(int)transaction.get("amount"),(int)transaction.get("employeeId")));
             }
         } catch (IOException e) {
             System.out.println("wrong path nigga");
@@ -542,6 +544,7 @@ public class StoreRecord {
             JSONObject storeData = (JSONObject) new JSONTokener(getFileString(usersDataFileObj)).nextValue();
             this.name = (String) storeData.get("name");
             this.balance = (int) storeData.get("balance");
+            System.out.println(balance);
         } catch (IOException e) {
             System.out.println("wrong path nigga");
         }
