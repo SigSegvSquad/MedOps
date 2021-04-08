@@ -3,6 +3,9 @@ package medops.screens;
 import medops.StoreRecord;
 
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 public class EmployeeScreen {
     boolean isManager;
@@ -27,5 +30,16 @@ public class EmployeeScreen {
         employeeScreen.setSize(width + (2*padding), height + (4*padding));
         employeeScreen.setLayout(null);
         employeeScreen.setVisible(true);
+
+        // On window closing
+        employeeScreen.addWindowListener(new WindowAdapter() {
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                storeRecord.autoSave();
+            }
+
+        });
+
     }
 }

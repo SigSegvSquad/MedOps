@@ -28,4 +28,29 @@ public class TransactionRecord {
         this.totalPrice = totalPrice;
         this.employeeId = employeeId;
     }
+
+    public int getTransactionId() {
+        return transactionId;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public Transaction[] getMedicines() {
+        return medicines;
+    }
+
+    public String getTimeOfPurchase() {
+        return timeOfPurchase;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public int getEmployeeId() {
+        return employeeId;
+    }
+
 }

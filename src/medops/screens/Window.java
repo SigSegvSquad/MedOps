@@ -6,5 +6,7 @@ import javax.swing.*;
 public class Window {
     public Window(){
         LoginScreen loginScreen = new LoginScreen();
+
+
     }
 }

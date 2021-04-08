@@ -25,14 +25,40 @@ class Shift{
 }
 
 public class Employee {
+    public int getID() {
+        return ID;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getShift() {
+        return shift;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getSalaryInRupees() {
+        return salaryInRupees;
+    }
+
     private int ID;
-    private Shift shift;
+    private String username;
+    private String shift;
     private String password;
     private String name;
     private int salaryInRupees;
 
-    Employee(int id, String name, String password, int salary){
+    Employee(int id, String username, String name, String password, int salary){
         this.ID = id;
+        this.username = username;
         this.name = name;
         this.password = password;
         this.salaryInRupees = salary;
