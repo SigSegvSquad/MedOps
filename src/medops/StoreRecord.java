@@ -68,7 +68,14 @@ public class StoreRecord {
 
             for (int i = 0; i < transactionArray.length(); i++) {
                 JSONObject transaction = transactionArray.getJSONObject(i);
-                transactionRecordList.add(new TransactionRecord((int)transaction.get("id"),(String)transaction.get("type"),(JSONArray)transaction.get("medicines"),(String)transaction.get("time"),(int)transaction.get("amount"),(int)transaction.get("employeeId")));
+
+                JSONArray transactedMedsJson = (JSONArray) transaction.get("medicines");
+                Transaction[] transactedMeds = new Transaction[transactedMedsJson.length()];
+                for(int j=0;j<transactedMedsJson.length();j++){
+                    transactedMeds[i] = new Transaction((String)transactedMedsJson.getJSONObject(j).get("name"),(int)transactedMedsJson.getJSONObject(j).get("qty"));
+                }
+
+                transactionRecordList.add(new TransactionRecord((int)transaction.get("id"),(String)transaction.get("type"),transactedMeds,(String)transaction.get("time"),(int)transaction.get("amount"),(int)transaction.get("employeeId")));
             }
         } catch (IOException e) {
             System.out.println("wrong path nigga");
