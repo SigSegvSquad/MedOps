@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 public class SalesPanel {
     public JPanel salesPanel;
     private JButton addMedicineButton;
-    private JButton doneButton;
+    private JButton registerTransactionButton;
     private JButton cancelTransactionButton;
     private JTextArea generatedReceipt;
     private JButton generateRecieptButton;
@@ -27,7 +27,7 @@ public class SalesPanel {
             }
         });
 
-        doneButton.addActionListener(new ActionListener() {
+        registerTransactionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 

@@ -55,11 +55,6 @@ public class StoreRecord {
                 medicineList.add(new Medicine((int) medicine.get("id"), (String) medicine.get("name"), (int) medicine.get("stock"), (int) medicine.get("price")));
             }
 
-            for (int i = 0; i < medicineList.size(); i++) {
-                Medicine medicine = medicineList.get(i);
-                System.out.println(new Medicine(medicine));;
-            }
-
         } catch (IOException e) {
             System.out.println("wrong path nigga");
         }

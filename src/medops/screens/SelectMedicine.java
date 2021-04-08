@@ -14,18 +14,20 @@ public class SelectMedicine {
     private JTextField textField1;
 
     public SelectMedicine() {
-        System.out.println(EmployeeScreen.storeRecord.medicineList.size());
 
         addNewMedicineButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 AddNewMedicine addNewMedicine = new AddNewMedicine();
 
-                JFrame selectMedicineFrame = new JFrame();
-                selectMedicineFrame.setTitle("Add Medicine");
-                selectMedicineFrame.setContentPane(addNewMedicine.panel);
-                selectMedicineFrame.setSize(400, 200);
-                selectMedicineFrame.setVisible(true);
+                JFrame addMedicineFrame = new JFrame();
+                addMedicineFrame.setTitle("Add Medicine");
+                addMedicineFrame.setContentPane(addNewMedicine.panel);
+                addMedicineFrame.setSize(400, 200);
+                addMedicineFrame.setVisible(true);
+
+                JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(panel);
+                topFrame.dispose();
             }
         });
 

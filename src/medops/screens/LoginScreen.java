@@ -20,7 +20,7 @@ import org.json.JSONObject;
 public class LoginScreen {
     JFrame frame;
     LoginScreen() {
-        frame = new JFrame("Demo application");
+        frame = new JFrame("Login");
         frame.setSize(300, 150);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
