@@ -10,10 +10,9 @@ public class EmployeeScreen {
     int height = 600;
     int padding = 20;
 
-    public static StoreRecord storeRecord;
+    public static StoreRecord storeRecord = new StoreRecord();
 
     public EmployeeScreen() {
-        storeRecord = new StoreRecord();
 
         JFrame employeeScreen = new JFrame();
         employeeScreen.setTitle("Manage Pharmacy");

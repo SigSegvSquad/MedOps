@@ -14,6 +14,8 @@ public class SelectMedicine {
     private JTextField textField1;
 
     public SelectMedicine() {
+        System.out.println(EmployeeScreen.storeRecord.medicineList.size());
+
         addNewMedicineButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -29,7 +31,6 @@ public class SelectMedicine {
 
         for (int i = 0; i < EmployeeScreen.storeRecord.medicineList.size(); i++) {
             Medicine medicine = EmployeeScreen.storeRecord.medicineList.get(i);
-            System.out.println(new Medicine(medicine));
             medicineList.addItem(new Medicine(medicine));
         }
     }
