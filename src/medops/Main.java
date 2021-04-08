@@ -12,3 +12,10 @@ public class Main {
         Window medops = new Window();
     }
 }
+
+/*
+TODO:
+- Add medicine price to MedicineAmount
+- Add employee management for admins
+- Create documentation
+*/
