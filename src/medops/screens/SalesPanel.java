@@ -51,6 +51,7 @@ public class SalesPanel {
         registerTransactionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                EmployeeScreen.storeRecord.transactionRecordList.add(salesRecord);
                 salesRecord = new TransactionRecord();
                 generatedReceipt.setText("");
             }

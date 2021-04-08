@@ -73,9 +73,9 @@ public class StoreRecord {
                 JSONObject transaction = transactionArray.getJSONObject(i);
 
                 JSONArray transactedMedsJson = (JSONArray) transaction.get("medicines");
-                Transaction[] transactedMeds = new Transaction[transactedMedsJson.length()];
+                ArrayList<Transaction> transactedMeds = new ArrayList<>();
                 for(int j=0;j<transactedMedsJson.length();j++){
-                    transactedMeds[j] = new Transaction((String)transactedMedsJson.getJSONObject(j).get("name"),(int)transactedMedsJson.getJSONObject(j).get("qty"));
+                    transactedMeds.add(new Transaction((String)transactedMedsJson.getJSONObject(j).get("name"),(int)transactedMedsJson.getJSONObject(j).get("qty")));
                 }
                 transactionRecordList.add(new TransactionRecord((int)transaction.get("id"),(String)transaction.get("type"),transactedMeds,(String)transaction.get("time"),(int)transaction.get("amount"),(int)transaction.get("employeeId")));
             }
@@ -168,11 +168,11 @@ public class StoreRecord {
             JSONObject transactionInfo = new JSONObject();
 
             JSONArray transactedMeds = new JSONArray();
-            System.out.println(transactionRecordList.get(i).getMedicines().length);
-            for(int j=0;j<transactionRecordList.get(i).getMedicines().length;j++){
+            System.out.println(transactionRecordList.get(i).getMedicines().size());
+            for(int j=0;j<transactionRecordList.get(i).getMedicines().size();j++){
                 JSONObject medObj = new JSONObject();
-                medObj.put("name",transactionRecordList.get(i).getMedicines()[j].medicine);
-                medObj.put("qty",transactionRecordList.get(i).getMedicines()[j].qty);
+                medObj.put("name",transactionRecordList.get(i).getMedicines().get(j).medicineName);
+                medObj.put("qty",transactionRecordList.get(i).getMedicines().get(j).qty);
                 transactedMeds.put(medObj);
             }
 

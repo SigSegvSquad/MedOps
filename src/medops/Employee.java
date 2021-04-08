@@ -56,7 +56,7 @@ public class Employee {
     private String name;
     private int salaryInRupees;
 
-    Employee(int id, String username, String name, String password, int salary){
+    public Employee(int id, String username, String name, String password, int salary){
         this.ID = id;
         this.username = username;
         this.name = name;

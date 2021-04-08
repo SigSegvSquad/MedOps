@@ -60,10 +60,10 @@ public class LoginScreen {
                     frame.dispose();
                     usersData.keySet().forEach(keyStr ->
                     {
-                        if (employee.get("is_admin") == "true") {
+                        if ((boolean) employee.get("is_admin")) {
                             //TODO: create CurrentManager?
                         }
-                        SharedData.currentEmployee = new Employee((int) employee.get("id"), (String) employee.get("name"), (String) employee.get("password"), (int) employee.get("salary"));
+                        SharedData.currentEmployee = new Employee((int) employee.get("id"),(String) keyStr, (String) employee.get("name"), (String) employee.get("password"), (int) employee.get("salary"));
                     });
 
                     EmployeeScreen employeeScreen = new EmployeeScreen();
