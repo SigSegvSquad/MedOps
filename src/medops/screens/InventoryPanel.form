@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="inventoryPanel" layout-manager="GridLayoutManager" row-count="3" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="20" width="511" height="400"/>
     </constraints>
     <properties/>
     <border type="none" title=""/>
@@ -18,6 +18,7 @@
           <model>
             <item value="Medicine #1"/>
             <item value="Medicine #2"/>
+            <item value="Medicine #3"/>
           </model>
         </properties>
       </component>
@@ -75,6 +76,14 @@
         <border type="none"/>
         <children/>
       </grid>
+      <component id="e227f" class="javax.swing.JButton" binding="updateButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Update"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>
