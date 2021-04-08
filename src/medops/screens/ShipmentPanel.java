@@ -3,11 +3,13 @@ package medops.screens;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class ShipmentPanel {
     public JPanel shipmentPanel;
 
-    private JButton doneButton;
+    private JButton registerTransactionButton;
     private JButton cancelTransactionButton;
     private JButton addMedicineButton;
     private JTextArea generatedReceipt;
@@ -25,10 +27,16 @@ public class ShipmentPanel {
                 selectMedicineFrame.setContentPane(selectMedicine.panel);
                 selectMedicineFrame.setSize(400, 200);
                 selectMedicineFrame.setVisible(true);
+
+                selectMedicineFrame.addWindowListener(new WindowAdapter() {
+                    public void windowClosing(WindowEvent e) {
+
+                    }
+                });
             }
         });
 
-        doneButton.addActionListener(new ActionListener() {
+        registerTransactionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
