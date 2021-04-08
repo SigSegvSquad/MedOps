@@ -19,7 +19,7 @@ public class AddNewMedicine {
             public void actionPerformed(ActionEvent e) {
                 String name = nameField.getText();
                 int price = Integer.parseInt(priceField.getText());
-                Medicine newMedicine = new Medicine(++Medicine.lastID, name, 0, price);
+                Medicine newMedicine = new Medicine(Medicine.lastID++, name, 0, price);
                 EmployeeScreen.storeRecord.medicineList.add(newMedicine);
             }
         });

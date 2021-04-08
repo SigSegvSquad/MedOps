@@ -31,7 +31,47 @@ public class Employee {
     private String name;
     private int salaryInRupees;
 
-    Employee(int id, String name, String password, int salary){
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public Shift getShift() {
+        return shift;
+    }
+
+    public void setShift(Shift shift) {
+        this.shift = shift;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getSalaryInRupees() {
+        return salaryInRupees;
+    }
+
+    public void setSalaryInRupees(int salaryInRupees) {
+        this.salaryInRupees = salaryInRupees;
+    }
+
+    public Employee(int id, String name, String password, int salary){
         this.ID = id;
         this.name = name;
         this.password = password;

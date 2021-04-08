@@ -1,6 +1,5 @@
 package medops;
 
-import medops.screens.EmployeeScreen;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -55,6 +54,8 @@ public class StoreRecord {
                 medicineList.add(new Medicine((int) medicine.get("id"), (String) medicine.get("name"), (int) medicine.get("stock"), (int) medicine.get("price")));
             }
 
+            Medicine.lastID = medicineArray.length();
+
         } catch (IOException e) {
             System.out.println("wrong path nigga");
         }
@@ -70,10 +71,11 @@ public class StoreRecord {
                 JSONObject transaction = transactionArray.getJSONObject(i);
 
                 JSONArray transactedMedsJson = (JSONArray) transaction.get("medicines");
-                Transaction[] transactedMeds = new Transaction[transactedMedsJson.length()];
+                MedicineAmount[] transactedMeds = new MedicineAmount[transactedMedsJson.length()];
                 for(int j=0;j<transactedMedsJson.length();j++){
-                    transactedMeds[i] = new Transaction((String)transactedMedsJson.getJSONObject(j).get("name"),(int)transactedMedsJson.getJSONObject(j).get("qty"));
+                    transactedMeds[i] = new MedicineAmount((String)transactedMedsJson.getJSONObject(j).get("name"),(int)transactedMedsJson.getJSONObject(j).get("qty"));
                 }
+                TransactionRecord.lastTransactionID = transactedMeds.length;
 
                 transactionRecordList.add(new TransactionRecord((int)transaction.get("id"),(String)transaction.get("type"),transactedMeds,(String)transaction.get("time"),(int)transaction.get("amount"),(int)transaction.get("employeeId")));
             }

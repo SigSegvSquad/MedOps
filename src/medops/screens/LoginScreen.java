@@ -13,12 +13,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import medops.Employee;
+import medops.Manager;
+import medops.SharedData;
 import org.json.JSONException;
 import org.json.JSONTokener;
 import org.json.JSONObject;
 
 public class LoginScreen {
     JFrame frame;
+
     LoginScreen() {
         frame = new JFrame("Login");
         frame.setSize(300, 150);
@@ -32,10 +36,10 @@ public class LoginScreen {
     }
 
     private String getFileString(FileReader fileObj) throws IOException {
-        String output="";
+        String output = "";
         int i;
-        while((i=fileObj.read()) != -1){
-            output += (char)i;
+        while ((i = fileObj.read()) != -1) {
+            output += (char) i;
         }
         return output;
     }
@@ -44,31 +48,32 @@ public class LoginScreen {
         boolean everythingChecksOut = false;
         //do stuff
         try {
-            FileReader usersDataFileObj = new FileReader(System.getProperty("user.dir")+ File.separator+"database/users.json");
+            FileReader usersDataFileObj = new FileReader(System.getProperty("user.dir") + File.separator + "database/users.json");
 
-            JSONObject usersData =(JSONObject) new JSONTokener(getFileString(usersDataFileObj)).nextValue();
+            JSONObject usersData = (JSONObject) new JSONTokener(getFileString(usersDataFileObj)).nextValue();
 
             try {
                 String userDataStr = usersData.get(username).toString();
-                JSONObject userData = (JSONObject) new JSONTokener(userDataStr).nextValue();
+                JSONObject employee = (JSONObject) new JSONTokener(userDataStr).nextValue();
 
-                if(userData.get("password").toString().equals(password)) {
-                    everythingChecksOut = true;
-                    if (everythingChecksOut) {
-                        frame.setVisible(false);
-                        EmployeeScreen employeeScreen = new EmployeeScreen();
+                if (employee.get("password").toString().equals(password)) {
+                    frame.dispose();
+                    usersData.keySet().forEach(keyStr ->
+                    {
+                        if (employee.get("is_admin") == "true") {
+                            //TODO: create CurrentManager?
+                        }
+                        SharedData.currentEmployee = new Employee((int) employee.get("id"), (String) employee.get("name"), (String) employee.get("password"), (int) employee.get("salary"));
+                    });
 
-                    }
-                }
-                else{
+                    EmployeeScreen employeeScreen = new EmployeeScreen();
+                } else {
                     System.out.println("Wrong Password");
                 }
-            }
-            catch (JSONException e) {
+            } catch (JSONException e) {
                 System.out.println("Username not found!");
             }
-        }
-        catch(IOException e){
+        } catch (IOException e) {
             System.out.println("Failed to read!");
         }
     }
