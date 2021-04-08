@@ -9,8 +9,6 @@ import java.time.format.DateTimeFormatter;
 
 public class Main {
     public static void main(String[] args) {
-//        Window medops = new Window();
-
-        EmployeeScreen employeeScreen = new EmployeeScreen();
+        Window medops = new Window();
     }
 }
