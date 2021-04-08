@@ -1,12 +1,1 @@
-{
-  "transactionsArray": [
-    {
-      "id": 0,
-      "type": "sell",
-      "medicines": [{"name":"MAYCORIL DX","qty":4},{"name":"AZINET TAB","qty":3}],
-      "amount": 539,
-      "employeeId": 1,
-      "time": "2021/04/07 18:41:11"
-    }
-  ]
-}
+{"transactionsArray":[{"amount":539,"medicines":[{"qty":2,"name":"BUZINET TAB"},{"qty":2,"name":"AZINET TAB"}],"employeeId":1,"id":0,"time":"2021/04/07 18:41:11","type":"sell"},{"amount":180,"medicines":[{"qty":2,"name":"Tolnaftate"},{"qty":1,"name":"Riboflavin"}],"employeeId":2,"id":1,"time":"2021/04/08 20:30:36","type":"Sale"}]}

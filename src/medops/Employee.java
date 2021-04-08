@@ -25,54 +25,40 @@ class Shift{
 }
 
 public class Employee {
-    private int ID;
-    private Shift shift;
-    private String password;
-    private String name;
-    private int salaryInRupees;
-
     public int getID() {
         return ID;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public String getUsername() {
+        return username;
     }
 
-    public Shift getShift() {
+    public String getShift() {
         return shift;
-    }
-
-    public void setShift(Shift shift) {
-        this.shift = shift;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getSalaryInRupees() {
         return salaryInRupees;
     }
 
-    public void setSalaryInRupees(int salaryInRupees) {
-        this.salaryInRupees = salaryInRupees;
-    }
+    private int ID;
+    private String username;
+    private String shift;
+    private String password;
+    private String name;
+    private int salaryInRupees;
 
-    public Employee(int id, String name, String password, int salary){
+    public Employee(int id, String username, String name, String password, int salary){
         this.ID = id;
+        this.username = username;
         this.name = name;
         this.password = password;
         this.salaryInRupees = salary;

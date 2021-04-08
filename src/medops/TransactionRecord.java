@@ -6,11 +6,12 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.Locale;
 
-class MedicineAmount {
+
+class Transaction {
     String medicineName;
     int qty;
 
-    MedicineAmount(String medicine, int qty){
+    Transaction(String medicine, int qty){
         this.medicineName = medicine;
         this.qty = qty;
     }
@@ -32,7 +33,7 @@ public class TransactionRecord {
 
     private int transactionId;
     public String type;
-    private ArrayList<MedicineAmount> medicines = new ArrayList<>();
+    private ArrayList<Transaction> medicines = new ArrayList<>();
     private String timeOfPurchase;
     private float totalPrice;
     public int employeeId;
@@ -42,17 +43,17 @@ public class TransactionRecord {
         totalPrice = 0;
     }
 
-    public TransactionRecord(int transactionId, String type, MedicineAmount[] medicines, String timeOfPurchase, int totalPrice, int employeeId){
+    public TransactionRecord(int transactionId, String type, ArrayList<Transaction> medicines, String timeOfPurchase, int totalPrice, int employeeId){
         this.transactionId = transactionId;
         this.type = type;
-        Collections.addAll(this.medicines, medicines);
+        this.medicines = medicines;
         this.timeOfPurchase = timeOfPurchase;
         this.totalPrice = totalPrice;
         this.employeeId = employeeId;
     }
 
     public void addMedicine(String name, int quantity){
-        medicines.add(new MedicineAmount(name, quantity));
+        medicines.add(new Transaction(name, quantity));
     }
 
     @Override
@@ -66,7 +67,7 @@ public class TransactionRecord {
         result.append("Transaction Time   : ").append(timeOfPurchase).append("\n");
         result.append("Employee ID        : ").append(employeeId).append("\n\n\n");
 
-        for(MedicineAmount medicine: medicines){
+        for(Transaction medicine: medicines){
             result.append(medicine.getFormattedAmount(width)).append("\n");
         }
         result.append("\n");
@@ -112,6 +113,10 @@ public class TransactionRecord {
         if(price > 0) {
             this.totalPrice += price;
         }
+    }
+
+    public ArrayList<Transaction> getMedicines() {
+        return medicines;
     }
 
     public int getEmployeeId() {
