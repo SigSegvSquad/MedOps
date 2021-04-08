@@ -6,8 +6,8 @@ import javax.swing.*;
 
 public class InventoryPanel {
     public JPanel inventoryPanel;
-    private JList list1;
-    private DefaultListModel<Medicine> tempList;
+    private JList<Medicine> list1;
+    DefaultListModel<Medicine> tempList;
     private JTextArea medicineDetailsTextArea;
     private JButton updateButton;
 
@@ -17,7 +17,6 @@ public class InventoryPanel {
             Medicine medicine = EmployeeScreen.storeRecord.medicineList.get(i);
             tempList.addElement(medicine);
         }
-        list1 = new JList(tempList);
+        list1.setModel(tempList);
     }
-
 }
