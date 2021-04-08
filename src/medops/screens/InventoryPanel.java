@@ -3,6 +3,8 @@ package medops.screens;
 import medops.Medicine;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class InventoryPanel {
     public JPanel inventoryPanel;
@@ -18,5 +20,21 @@ public class InventoryPanel {
             tempList.addElement(medicine);
         }
         list1.setModel(tempList);
+
+        list1.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                int idxOfSelectedMed = list1.getSelectedIndex();
+
+                String newLine = System.getProperty("line.separator");
+                String medicineInfo = tempList.get(idxOfSelectedMed).getName()
+                        + newLine
+                        + "Price: " + tempList.get(idxOfSelectedMed).getPrice()
+                        + newLine
+                        + "Quantity in stock: " + tempList.get(idxOfSelectedMed).getPrice();
+
+                medicineDetailsTextArea.setText(medicineInfo);
+            }
+        });
     }
 }
