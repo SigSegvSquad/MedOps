@@ -1,5 +1,7 @@
 package medops.screens;
 
+import medops.StoreRecord;
+
 import javax.swing.*;
 
 public class EmployeeScreen {
@@ -8,7 +10,11 @@ public class EmployeeScreen {
     int height = 600;
     int padding = 20;
 
-    EmployeeScreen() {
+    public static StoreRecord storeRecord;
+
+    public EmployeeScreen() {
+        storeRecord = new StoreRecord();
+
         JFrame employeeScreen = new JFrame();
         employeeScreen.setTitle("Manage Pharmacy");
         JTextArea ta = new JTextArea(200, 200);

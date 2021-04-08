@@ -481,7 +481,7 @@ public class StoreRecord {
         }
     };
 
-    StoreRecord() {
+    public StoreRecord() {
         loadEmployeeList();
         loadMedicineList();
         loadSalesRecordList();
@@ -515,7 +515,6 @@ public class StoreRecord {
 
             for (int i = 0; i < medicineArray.length(); i++) {
                 JSONObject medicine = medicineArray.getJSONObject(i);
-                System.out.println(medicine.get("name"));
                 medicineList.add(new Medicine((int) medicine.get("id"), (String) medicine.get("name"), (int) medicine.get("stock"), (int) medicine.get("price")));
             }
         } catch (IOException e) {
