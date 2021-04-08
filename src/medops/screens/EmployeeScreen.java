@@ -13,7 +13,6 @@ public class EmployeeScreen {
     public static StoreRecord storeRecord = new StoreRecord();
 
     public EmployeeScreen() {
-
         JFrame employeeScreen = new JFrame();
         employeeScreen.setTitle("Manage Pharmacy");
         JTextArea ta = new JTextArea(200, 200);
