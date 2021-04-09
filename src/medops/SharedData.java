@@ -15,8 +15,15 @@ public class SharedData {
         } else {
             addOrSubtract = -1;
         }
+
         for(TransactedMedicine medicine: record.getMedicines()){
             allOkay &= doesMedicineExist(medicine, addOrSubtract);
+        }
+
+        if(allOkay){
+            System.out.println("Transaction recorded at " + record.getTimeOfPurchase() + " by Employee ID " + record.getEmployeeId());
+        } else {
+            System.out.println("Problem recording Transaction at " + record.getTimeOfPurchase() + " by Employee ID " + record.getEmployeeId());
         }
         return allOkay;
     }

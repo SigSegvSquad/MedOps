@@ -12,6 +12,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import medops.Employee;
 import medops.Manager;
@@ -65,6 +67,8 @@ public class LoginScreen {
                         }
                         SharedData.currentEmployee = new Employee((int) employee.get("id"), keyStr, (String) employee.get("name"), (String) employee.get("password"), (int) employee.get("salary"));
                     });
+
+                    System.out.println("Employee " + employee.get("name") + " has logged in at " + new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
 
                     EmployeeScreen employeeScreen = new EmployeeScreen();
                 } else {
