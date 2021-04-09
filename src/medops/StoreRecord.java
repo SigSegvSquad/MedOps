@@ -1,6 +1,5 @@
 package medops;
 
-import medops.screens.EmployeeScreen;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -75,9 +74,9 @@ public class StoreRecord {
                 JSONObject transaction = transactionArray.getJSONObject(i);
 
                 JSONArray transactedMedsJson = (JSONArray) transaction.get("medicines");
-                ArrayList<Transaction> transactedMeds = new ArrayList<>();
+                ArrayList<TransactedMedicine> transactedMeds = new ArrayList<>();
                 for(int j=0;j<transactedMedsJson.length();j++){
-                    transactedMeds.add(new Transaction((String)transactedMedsJson.getJSONObject(j).get("name"),(int)transactedMedsJson.getJSONObject(j).get("qty")));
+                    transactedMeds.add(new TransactedMedicine((String)transactedMedsJson.getJSONObject(j).get("name"),(int)transactedMedsJson.getJSONObject(j).get("qty")));
                 }
                 transactionRecordList.add(new TransactionRecord((int)transaction.get("id"),(String)transaction.get("type"),transactedMeds,(String)transaction.get("time"),(int)transaction.get("amount"),(int)transaction.get("employeeId")));
             }
@@ -106,7 +105,6 @@ public class StoreRecord {
         }
         return output.toString();
     }
-
 
     public void autoSave(){
         // Saves data in users.json
@@ -137,7 +135,6 @@ public class StoreRecord {
             file.write(usersJson.toString());
             file.close();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -159,7 +156,6 @@ public class StoreRecord {
             file.write(medicinesJson.toString());
             file.close();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -194,7 +190,6 @@ public class StoreRecord {
             file.write(transactionRecordJson.toString());
             file.close();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -208,7 +203,6 @@ public class StoreRecord {
             file.write(storeInfo.toString());
             file.close();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

@@ -2,16 +2,15 @@ package medops;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.Locale;
 
 
-class Transaction {
+class TransactedMedicine {
     String medicineName;
     int qty;
 
-    Transaction(String medicine, int qty){
+    TransactedMedicine(String medicine, int qty){
         this.medicineName = medicine;
         this.qty = qty;
     }
@@ -33,7 +32,7 @@ public class TransactionRecord {
 
     private int transactionId;
     public String type;
-    private ArrayList<Transaction> medicines = new ArrayList<>();
+    private ArrayList<TransactedMedicine> medicines = new ArrayList<>();
     private String timeOfPurchase;
     private float totalPrice;
     public int employeeId;
@@ -43,7 +42,7 @@ public class TransactionRecord {
         totalPrice = 0;
     }
 
-    public TransactionRecord(int transactionId, String type, ArrayList<Transaction> medicines, String timeOfPurchase, int totalPrice, int employeeId){
+    public TransactionRecord(int transactionId, String type, ArrayList<TransactedMedicine> medicines, String timeOfPurchase, int totalPrice, int employeeId){
         this.transactionId = transactionId;
         this.type = type;
         this.medicines = medicines;
@@ -53,7 +52,7 @@ public class TransactionRecord {
     }
 
     public void addMedicine(String name, int quantity){
-        medicines.add(new Transaction(name, quantity));
+        medicines.add(new TransactedMedicine(name, quantity));
     }
 
     @Override
@@ -67,7 +66,7 @@ public class TransactionRecord {
         result.append("Transaction Time   : ").append(timeOfPurchase).append("\n");
         result.append("Employee ID        : ").append(employeeId).append("\n\n\n");
 
-        for(Transaction medicine: medicines){
+        for(TransactedMedicine medicine: medicines){
             result.append(medicine.getFormattedAmount(width)).append("\n");
         }
         result.append("\n");
@@ -115,7 +114,7 @@ public class TransactionRecord {
         }
     }
 
-    public ArrayList<Transaction> getMedicines() {
+    public ArrayList<TransactedMedicine> getMedicines() {
         return medicines;
     }
 
