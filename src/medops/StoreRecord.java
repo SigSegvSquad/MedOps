@@ -58,6 +58,8 @@ public class StoreRecord {
                 medicineList.add(new Medicine((int) medicine.get("id"), (String) medicine.get("name"), (int) medicine.get("stock"), (int) medicine.get("price")));
             }
 
+            Medicine.lastID = medicineArray.length();
+
         } catch (IOException e) {
             System.out.println("wrong path nigga");
         }
