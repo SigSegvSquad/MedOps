@@ -23,32 +23,26 @@ public class InventoryPanel {
         }
         list1.setModel(tempList);
 
-        list1.addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                int idxOfSelectedMed = list1.getSelectedIndex();
+        list1.addListSelectionListener(e -> {
+            int idxOfSelectedMed = list1.getSelectedIndex();
 
-                String newLine = System.getProperty("line.separator");
-                String medicineInfo = tempList.get(idxOfSelectedMed).getName()
-                        + newLine
-                        + "Price: " + tempList.get(idxOfSelectedMed).getPrice()
-                        + newLine
-                        + "Quantity in stock: " + tempList.get(idxOfSelectedMed).getPrice();
+            String newLine = System.getProperty("line.separator");
+            String medicineInfo = tempList.get(idxOfSelectedMed).getName()
+                    + newLine
+                    + "Price: " + tempList.get(idxOfSelectedMed).getPrice()
+                    + newLine
+                    + "Quantity in stock: " + tempList.get(idxOfSelectedMed).getQty();
 
-                medicineDetailsTextArea.setText(medicineInfo);
-            }
+            medicineDetailsTextArea.setText(medicineInfo);
         });
 
-        updateButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                tempList = new DefaultListModel<>();
-                for (int i = 0; i < EmployeeScreen.storeRecord.medicineList.size(); i++) {
-                    Medicine medicine = EmployeeScreen.storeRecord.medicineList.get(i);
-                    tempList.addElement(medicine);
-                }
-                list1.setModel(tempList);
+        updateButton.addActionListener(e -> {
+            tempList = new DefaultListModel<>();
+            for (int i = 0; i < EmployeeScreen.storeRecord.medicineList.size(); i++) {
+                Medicine medicine = EmployeeScreen.storeRecord.medicineList.get(i);
+                tempList.addElement(medicine);
             }
+            list1.setModel(tempList);
         });
     }
 }
