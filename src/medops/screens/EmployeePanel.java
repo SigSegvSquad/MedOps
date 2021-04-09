@@ -3,6 +3,8 @@ package medops.screens;
 import medops.Employee;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class EmployeePanel {
     public JPanel EmployeePanel;
@@ -31,6 +33,19 @@ public class EmployeePanel {
                     "Salary: " + tempList.get(idxOfSelectedEmp).getSalaryInRupees();
 
             textArea1.setText(empInfo);
+        });
+
+       addEmployeeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddEmployee addEmployee = new AddEmployee();
+
+                JFrame addEmployeeFrame = new JFrame();
+                addEmployeeFrame.setTitle("Add Employee");
+                addEmployeeFrame.setContentPane(addEmployee.addEmployeePanel);
+                addEmployeeFrame.setSize(400, 200);
+                addEmployeeFrame.setVisible(true);
+            }
         });
 
     }
