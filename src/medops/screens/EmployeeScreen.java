@@ -18,7 +18,6 @@ public class EmployeeScreen {
     public EmployeeScreen() {
         JFrame employeeScreen = new JFrame();
         employeeScreen.setTitle("Manage Pharmacy");
-        JTextArea ta = new JTextArea(200, 200);
         JTabbedPane tp = new JTabbedPane();
         tp.setBounds(padding, padding, width, height);
         tp.add("Sale", new SalesPanel().salesPanel);

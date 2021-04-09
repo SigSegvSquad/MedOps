@@ -20,10 +20,12 @@ public class StoreRecord {
     public ArrayList<TransactionRecord> transactionRecordList = new ArrayList<>();
 
     public StoreRecord() {
+        System.out.println("Beginning Loading Data from Memory");
         loadEmployeeList();
         loadMedicineList();
         loadSalesRecordList();
         loadStoreRecord();
+        System.out.println("Data loaded from Memory");
     }
 
     void loadEmployeeList() {
@@ -37,11 +39,12 @@ public class StoreRecord {
                 if ((boolean)employee.get("is_admin")) {
                     managerList.add(new Manager((int) employee.get("id"), keyStr, (String) employee.get("name"), (String) employee.get("password"), (int) employee.get("salary")));
                 }
-                System.out.println(keyStr);
                 employeeList.add(new Employee((int) employee.get("id"), keyStr, (String) employee.get("name"), (String) employee.get("password"), (int) employee.get("salary")));
             });
+
+            System.out.println("* Loaded Employee List from Memory");
         } catch (IOException e) {
-            System.out.println("wrong path nigga");
+            System.out.println("* Incorrect file path for Employee List");
         }
     }
 
@@ -58,8 +61,9 @@ public class StoreRecord {
 
             Medicine.lastID = medicineArray.length();
 
+            System.out.println("* Loaded Medicine List from Memory");
         } catch (IOException e) {
-            System.out.println("wrong path nigga");
+            System.out.println("* Incorrect file path");
         }
     }
 
@@ -79,8 +83,10 @@ public class StoreRecord {
                 }
                 transactionRecordList.add(new TransactionRecord((int)transaction.get("id"),(String)transaction.get("type"),transactedMeds,(String)transaction.get("time"),(int)transaction.get("amount"),(int)transaction.get("employeeId")));
             }
+
+            System.out.println("* Loaded Transaction List from Memory");
         } catch (IOException e) {
-            System.out.println("wrong path nigga");
+            System.out.println("* Incorrect file path");
         }
     }
 
@@ -90,9 +96,10 @@ public class StoreRecord {
             JSONObject storeData = (JSONObject) new JSONTokener(getFileString(usersDataFileObj)).nextValue();
             this.name = (String) storeData.get("name");
             this.balance = (int) storeData.get("balance");
-            System.out.println(balance);
+
+            System.out.println("* Loaded Miscellaneous Store Details from Memory");
         } catch (IOException e) {
-            System.out.println("wrong path nigga");
+            System.out.println("* Incorrect file path");
         }
     }
 
@@ -165,7 +172,6 @@ public class StoreRecord {
             JSONObject transactionInfo = new JSONObject();
 
             JSONArray transactedMeds = new JSONArray();
-            System.out.println(transactionRecordList.get(i).getMedicines().size());
             for(int j=0;j<transactionRecordList.get(i).getMedicines().size();j++){
                 JSONObject medObj = new JSONObject();
                 medObj.put("name",transactionRecordList.get(i).getMedicines().get(j).medicineName);
