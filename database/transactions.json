@@ -1,1 +1,1 @@
-{"transactionsArray":[{"amount":180,"medicines":[{"qty":2,"name":"Tolnaftate","price": 120},{"qty":1,"name":"Riboflavin"}],"employeeId":2,"id":1,"time":"2021/04/08 20:30:36","type":"Sale"}]}
+{"transactionsArray":[{"amount":180,"medicines":[{"qty":2,"name":"Tolnaftate"},{"qty":1,"name":"Riboflavin"}],"employeeId":2,"id":1,"time":"2021/04/08 20:30:36","type":"Sale"}]}

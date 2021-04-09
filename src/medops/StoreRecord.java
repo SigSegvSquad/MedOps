@@ -76,7 +76,7 @@ public class StoreRecord {
                 JSONArray transactedMedsJson = (JSONArray) transaction.get("medicines");
                 ArrayList<TransactedMedicine> transactedMeds = new ArrayList<>();
                 for(int j=0;j<transactedMedsJson.length();j++){
-                    transactedMeds.add(new TransactedMedicine((String)transactedMedsJson.getJSONObject(j).get("name"),(int)transactedMedsJson.getJSONObject(j).get("qty")));
+                    transactedMeds.add(new TransactedMedicine((String)transactedMedsJson.getJSONObject(j).get("name"),(int)transactedMedsJson.getJSONObject(j).get("qty"), (int)transactedMedsJson.getJSONObject(j).get("price")));
                 }
                 transactionRecordList.add(new TransactionRecord((int)transaction.get("id"),(String)transaction.get("type"),transactedMeds,(String)transaction.get("time"),(int)transaction.get("amount"),(int)transaction.get("employeeId")));
             }
