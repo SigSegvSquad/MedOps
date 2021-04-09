@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class EmployeePanel {
-    public JPanel EmployeePanel;
+    public JPanel employeePanel;
     private JList list1;
     private DefaultListModel<Employee> tempList;
     private JTextArea textArea1;

@@ -5,7 +5,6 @@ import medops.StoreRecord;
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 
 public class EmployeeScreen {
     boolean isManager;
@@ -18,14 +17,15 @@ public class EmployeeScreen {
     public EmployeeScreen() {
         JFrame employeeScreen = new JFrame();
         employeeScreen.setTitle("Manage Pharmacy");
-        JTabbedPane tp = new JTabbedPane();
-        tp.setBounds(padding, padding, width, height);
-        tp.add("Sale", new SalesPanel().salesPanel);
-        tp.add("Shipment", new ShipmentPanel().shipmentPanel);
-        tp.add("Inventory", new InventoryPanel().inventoryPanel);
-        tp.add("Manage Employees", new EmployeePanel().EmployeePanel);
+        JTabbedPane employeeTabbedPane = new JTabbedPane();
+        employeeTabbedPane.setBounds(padding, padding, width, height);
+        employeeTabbedPane.add("Sale", new SalesPanel().salesPanel);
+        employeeTabbedPane.add("Shipment", new ShipmentPanel().shipmentPanel);
+        employeeTabbedPane.add("Inventory", new InventoryPanel().inventoryPanel);
+        employeeTabbedPane.add("Manage Employees", new EmployeePanel().employeePanel);
+        employeeTabbedPane.add("Current Shift", new EmployeeDetails().detailsPanel);
 
-        employeeScreen.add(tp);
+        employeeScreen.add(employeeTabbedPane);
         employeeScreen.setSize(width + (2*padding), height + (4*padding));
         employeeScreen.setLayout(null);
         employeeScreen.setVisible(true);
