@@ -106,10 +106,6 @@ public class LoginScreen {
         loginButton.setBounds(10, 80, 80, 25);
         panel.add(loginButton);
 
-        JButton registerButton = new JButton("register");
-        registerButton.setBounds(180, 80, 80, 25);
-        panel.add(registerButton);
-
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
