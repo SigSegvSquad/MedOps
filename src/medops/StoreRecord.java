@@ -26,7 +26,6 @@ public class StoreRecord {
         loadStoreRecord();
     }
 
-
     void loadEmployeeList() {
         try {
             FileReader usersDataFileObj = new FileReader(System.getProperty("user.dir") + File.separator + "database/users.json");
