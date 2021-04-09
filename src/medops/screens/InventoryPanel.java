@@ -3,6 +3,8 @@ package medops.screens;
 import medops.Medicine;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class InventoryPanel {
     public JPanel inventoryPanel;
@@ -43,6 +45,19 @@ public class InventoryPanel {
             if (tempList.size() > medicineDefaultListModel.size()) {
                 medicineDefaultListModel = tempList;
                 list1.setModel(medicineDefaultListModel);
+            }
+        });
+
+        addMedicineButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddNewMedicine addNewMedicine = new AddNewMedicine();
+
+                JFrame addMedicineFrame = new JFrame();
+                addMedicineFrame.setTitle("Add Medicine");
+                addMedicineFrame.setContentPane(addNewMedicine.panel);
+                addMedicineFrame.setSize(400, 200);
+                addMedicineFrame.setVisible(true);
             }
         });
     }

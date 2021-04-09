@@ -20,7 +20,8 @@ public class AddNewMedicine {
             Medicine newMedicine = new Medicine(Medicine.lastID++, name, 0, price);
             EmployeeScreen.storeRecord.medicineList.add(newMedicine);
 
-
+            JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(panel);
+            topFrame.dispose();
         });
     }
 }
