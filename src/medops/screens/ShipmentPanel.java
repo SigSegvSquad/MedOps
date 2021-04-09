@@ -20,6 +20,7 @@ public class ShipmentPanel {
     private JTextArea generatedReceipt;
     private JButton generateRecieptButton;
     private JTextArea additionalNotes;
+    private JLabel employeeName;
 
     ShipmentPanel() {
         addMedicineButton.addActionListener(e -> {
@@ -58,5 +59,7 @@ public class ShipmentPanel {
             shipmentRecord = new TransactionRecord();
             generatedReceipt.setText("");
         });
+
+        employeeName.setText(SharedData.currentEmployee.getName());
     }
 }

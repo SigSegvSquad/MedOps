@@ -17,6 +17,7 @@ public class SalesPanel {
     private JTextArea generatedReceipt;
     private JButton generateRecieptButton;
     private JTextArea additionalNotes;
+    private JLabel employeeName;
 
     public SalesPanel() {
         addMedicineButton.addActionListener(new ActionListener() {
@@ -60,5 +61,7 @@ public class SalesPanel {
             salesRecord = new TransactionRecord();
             generatedReceipt.setText("");
         });
+
+        employeeName.setText(SharedData.currentEmployee.getName());
     }
 }
