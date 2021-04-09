@@ -25,6 +25,12 @@ class Shift{
 }
 
 public class Employee {
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
     public int getID() {
         return ID;
     }
