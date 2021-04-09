@@ -35,10 +35,10 @@ public class StoreRecord {
             {
                 JSONObject employee = (JSONObject) employeeData.get(keyStr);
                 if ((boolean)employee.get("is_admin")) {
-                    managerList.add(new Manager((int) employee.get("id"),(String)keyStr, (String) employee.get("name"), (String) employee.get("password"), (int) employee.get("salary")));
+                    managerList.add(new Manager((int) employee.get("id"), keyStr, (String) employee.get("name"), (String) employee.get("password"), (int) employee.get("salary")));
                 }
                 System.out.println(keyStr);
-                employeeList.add(new Employee((int) employee.get("id"),(String)keyStr, (String) employee.get("name"), (String) employee.get("password"), (int) employee.get("salary")));
+                employeeList.add(new Employee((int) employee.get("id"), keyStr, (String) employee.get("name"), (String) employee.get("password"), (int) employee.get("salary")));
             });
         } catch (IOException e) {
             System.out.println("wrong path nigga");
@@ -170,6 +170,7 @@ public class StoreRecord {
                 JSONObject medObj = new JSONObject();
                 medObj.put("name",transactionRecordList.get(i).getMedicines().get(j).medicineName);
                 medObj.put("qty",transactionRecordList.get(i).getMedicines().get(j).qty);
+                medObj.put("price",transactionRecordList.get(i).getMedicines().get(j).price);
                 transactedMeds.put(medObj);
             }
 
@@ -204,8 +205,5 @@ public class StoreRecord {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
-
 }

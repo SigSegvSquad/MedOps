@@ -22,7 +22,7 @@ public class SalesPanel {
         addMedicineButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SelectMedicine selectMedicine = new SelectMedicine();
+                SelectMedicine selectMedicine = new SelectMedicine(salesRecord);
 
                 JFrame selectMedicineFrame = new JFrame();
                 selectMedicineFrame.setTitle("Select Medicine");
@@ -46,9 +46,14 @@ public class SalesPanel {
         });
 
         registerTransactionButton.addActionListener(e -> {
-            EmployeeScreen.storeRecord.transactionRecordList.add(salesRecord);
+            if(SharedData.processTransaction(salesRecord)){
+                EmployeeScreen.storeRecord.transactionRecordList.add(salesRecord);
+                generatedReceipt.setText("");
+            } else {
+                generatedReceipt.setText("Error in processing, Try again");
+            }
+
             salesRecord = new TransactionRecord();
-            generatedReceipt.setText("");
         });
 
         cancelTransactionButton.addActionListener(e -> {

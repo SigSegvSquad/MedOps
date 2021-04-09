@@ -49,12 +49,12 @@ public class Employee {
         return salaryInRupees;
     }
 
-    private int ID;
-    private String username;
+    private final int ID;
+    private final String username;
     private String shift;
-    private String password;
-    private String name;
-    private int salaryInRupees;
+    private final String password;
+    private final String name;
+    private final int salaryInRupees;
 
     public Employee(int id, String username, String name, String password, int salary){
         this.ID = id;

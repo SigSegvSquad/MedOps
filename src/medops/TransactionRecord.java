@@ -6,35 +6,12 @@ import java.util.Date;
 import java.util.Locale;
 
 
-class TransactedMedicine {
-    String medicineName;
-    float price;
-    int qty;
-
-    TransactedMedicine(String medicine, int qty, float prc){
-        this.medicineName = medicine;
-        this.price = prc;
-        this.qty = qty;
-    }
-
-    public String getFormattedAmount(int width){
-        StringBuilder result = new StringBuilder();
-        String quantity = Integer.toString(qty);
-
-        result.append(medicineName);
-        result.append(" ".repeat(Math.max(0, width - medicineName.length() - quantity.length())));
-        result.append(quantity);
-
-        return result.toString();
-    }
-}
-
 public class TransactionRecord {
     public static int lastTransactionID = 0;
 
     private int transactionId;
     public String type;
-    private ArrayList<TransactedMedicine> medicines = new ArrayList<>();
+    public ArrayList<TransactedMedicine> medicines = new ArrayList<>();
     private String timeOfPurchase;
     private float totalPrice;
     public int employeeId;

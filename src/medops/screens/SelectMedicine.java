@@ -2,8 +2,11 @@ package medops.screens;
 
 import medops.Medicine;
 import medops.SharedData;
+import medops.TransactedMedicine;
+import medops.TransactionRecord;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class SelectMedicine {
     private JComboBox<Medicine> medicineList;
@@ -12,7 +15,7 @@ public class SelectMedicine {
     private JButton addNewMedicineButton;
     private JTextField AmountField;
 
-    public SelectMedicine() {
+    public SelectMedicine(TransactionRecord transactionRecord) {
         addNewMedicineButton.addActionListener(e -> {
             AddNewMedicine addNewMedicine = new AddNewMedicine();
 
@@ -34,6 +37,13 @@ public class SelectMedicine {
                 AmountField.setText("Enter Amount");
                 return;
             }
+
+            if(SharedData.selectedMedicine != null) {
+                transactionRecord.addMedicine(SharedData.selectedMedicine.getName(), SharedData.selectedMedicine.getQty(), SharedData.selectedMedicine.getPrice());
+                transactionRecord.addToTotalPrice(SharedData.selectedMedicine.getQty() * SharedData.selectedMedicine.getPrice());
+                SharedData.selectedMedicine = null;
+            }
+
             JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(panel);
             topFrame.dispose();
         });

@@ -23,7 +23,7 @@ public class ShipmentPanel {
 
     ShipmentPanel() {
         addMedicineButton.addActionListener(e -> {
-            SelectMedicine selectMedicine = new SelectMedicine();
+            SelectMedicine selectMedicine = new SelectMedicine(shipmentRecord);
 
             JFrame selectMedicineFrame = new JFrame();
             selectMedicineFrame.setTitle("Select Medicine");
@@ -46,8 +46,12 @@ public class ShipmentPanel {
         });
 
         registerTransactionButton.addActionListener(e -> {
-            shipmentRecord = new TransactionRecord();
-            generatedReceipt.setText("");
+            if(SharedData.processTransaction(shipmentRecord)){
+                EmployeeScreen.storeRecord.transactionRecordList.add(shipmentRecord);
+                generatedReceipt.setText("");
+            } else {
+                generatedReceipt.setText("Error in processing, Try again");
+            }
         });
 
         cancelTransactionButton.addActionListener(e -> {

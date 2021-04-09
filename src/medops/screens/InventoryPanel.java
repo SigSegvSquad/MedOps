@@ -3,47 +3,47 @@ package medops.screens;
 import medops.Medicine;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class InventoryPanel {
     public JPanel inventoryPanel;
     private JList<Medicine> list1;
-    DefaultListModel<Medicine> tempList;
+    DefaultListModel<Medicine> medicineDefaultListModel;
     private JTextArea medicineDetailsTextArea;
     private JButton updateButton;
     private JButton addMedicineButton;
 
-    public InventoryPanel(){
-        tempList = new DefaultListModel<>();
+    public InventoryPanel() {
+        medicineDefaultListModel = new DefaultListModel<>();
         for (int i = 0; i < EmployeeScreen.storeRecord.medicineList.size(); i++) {
             Medicine medicine = EmployeeScreen.storeRecord.medicineList.get(i);
-            tempList.addElement(medicine);
+            medicineDefaultListModel.addElement(medicine);
         }
-        list1.setModel(tempList);
+        list1.setModel(medicineDefaultListModel);
 
         list1.addListSelectionListener(e -> {
             int idxOfSelectedMed = list1.getSelectedIndex();
 
             String newLine = System.getProperty("line.separator");
-            String medicineInfo = tempList.get(idxOfSelectedMed).getName()
+            String medicineInfo = medicineDefaultListModel.get(idxOfSelectedMed).getName()
                     + newLine
-                    + "Price: " + tempList.get(idxOfSelectedMed).getPrice()
+                    + "Price: " + medicineDefaultListModel.get(idxOfSelectedMed).getPrice()
                     + newLine
-                    + "Quantity in stock: " + tempList.get(idxOfSelectedMed).getQty();
+                    + "Quantity in stock: " + medicineDefaultListModel.get(idxOfSelectedMed).getQty();
 
             medicineDetailsTextArea.setText(medicineInfo);
         });
 
         updateButton.addActionListener(e -> {
-            tempList = new DefaultListModel<>();
+            DefaultListModel<Medicine> tempList = new DefaultListModel<>();
             for (int i = 0; i < EmployeeScreen.storeRecord.medicineList.size(); i++) {
                 Medicine medicine = EmployeeScreen.storeRecord.medicineList.get(i);
                 tempList.addElement(medicine);
             }
-            list1.setModel(tempList);
+
+            if (tempList.size() > medicineDefaultListModel.size()) {
+                medicineDefaultListModel = tempList;
+                list1.setModel(medicineDefaultListModel);
+            }
         });
     }
 }

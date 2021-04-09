@@ -33,13 +33,10 @@ public class EmployeeScreen {
 
         // On window closing
         employeeScreen.addWindowListener(new WindowAdapter() {
-
             @Override
             public void windowClosing(WindowEvent e) {
                 storeRecord.autoSave();
             }
-
         });
-
     }
 }
