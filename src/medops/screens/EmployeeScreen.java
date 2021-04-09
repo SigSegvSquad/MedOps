@@ -24,6 +24,7 @@ public class EmployeeScreen {
         tp.add("Sale", new SalesPanel().salesPanel);
         tp.add("Shipment", new ShipmentPanel().shipmentPanel);
         tp.add("Inventory", new InventoryPanel().inventoryPanel);
+        tp.add("Manage Employees", new EmployeePanel().EmployeePanel);
 
         employeeScreen.add(tp);
         employeeScreen.setSize(width + (2*padding), height + (4*padding));
