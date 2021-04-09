@@ -32,37 +32,28 @@ public class SalesPanel {
             }
         });
 
-        generateRecieptButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (SharedData.selectedMedicine != null) {
-                    salesRecord.addMedicine(SharedData.selectedMedicine.getName(), SharedData.selectedMedicine.getQty());
-                    salesRecord.addToTotalPrice(SharedData.selectedMedicine.getQty() * SharedData.selectedMedicine.getPrice());
-                    SharedData.selectedMedicine = null;
-                }
-                salesRecord.setEmployeeId(SharedData.currentEmployee.getID());
-                salesRecord.setTransactionId(TransactionRecord.lastTransactionID++);
-                salesRecord.setType("Sale");
-                generatedReceipt.setText(salesRecord + "\n\n Additional Notes: " + additionalNotes.getText());
+        generateRecieptButton.addActionListener(e -> {
+            if (SharedData.selectedMedicine != null) {
+                salesRecord.addMedicine(SharedData.selectedMedicine.getName(), SharedData.selectedMedicine.getQty(), SharedData.selectedMedicine.getPrice());
+                salesRecord.addToTotalPrice(SharedData.selectedMedicine.getQty() * SharedData.selectedMedicine.getPrice());
+                SharedData.selectedMedicine = null;
             }
 
+            salesRecord.setEmployeeId(SharedData.currentEmployee.getID());
+            salesRecord.setTransactionId(TransactionRecord.lastTransactionID++);
+            salesRecord.setType("Sale");
+            generatedReceipt.setText(salesRecord + "\n\n Additional Notes: " + additionalNotes.getText());
         });
 
-        registerTransactionButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                EmployeeScreen.storeRecord.transactionRecordList.add(salesRecord);
-                salesRecord = new TransactionRecord();
-                generatedReceipt.setText("");
-            }
+        registerTransactionButton.addActionListener(e -> {
+            EmployeeScreen.storeRecord.transactionRecordList.add(salesRecord);
+            salesRecord = new TransactionRecord();
+            generatedReceipt.setText("");
         });
 
-        cancelTransactionButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                salesRecord = new TransactionRecord();
-                generatedReceipt.setText("");
-            }
+        cancelTransactionButton.addActionListener(e -> {
+            salesRecord = new TransactionRecord();
+            generatedReceipt.setText("");
         });
     }
 }

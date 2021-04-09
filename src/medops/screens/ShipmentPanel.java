@@ -22,48 +22,37 @@ public class ShipmentPanel {
     private JTextArea additionalNotes;
 
     ShipmentPanel() {
-        addMedicineButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                SelectMedicine selectMedicine = new SelectMedicine();
+        addMedicineButton.addActionListener(e -> {
+            SelectMedicine selectMedicine = new SelectMedicine();
 
-                JFrame selectMedicineFrame = new JFrame();
-                selectMedicineFrame.setTitle("Select Medicine");
-                selectMedicineFrame.setContentPane(selectMedicine.panel);
-                selectMedicineFrame.setSize(400, 200);
-                selectMedicineFrame.setVisible(true);
-            }
+            JFrame selectMedicineFrame = new JFrame();
+            selectMedicineFrame.setTitle("Select Medicine");
+            selectMedicineFrame.setContentPane(selectMedicine.panel);
+            selectMedicineFrame.setSize(400, 200);
+            selectMedicineFrame.setVisible(true);
         });
 
-        generateRecieptButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(SharedData.selectedMedicine != null) {
-                    shipmentRecord.addMedicine(SharedData.selectedMedicine.getName(), SharedData.selectedMedicine.getQty());
-                    shipmentRecord.addToTotalPrice(SharedData.selectedMedicine.getQty() * SharedData.selectedMedicine.getPrice());
-                    SharedData.selectedMedicine = null;
-                }
-                shipmentRecord.setEmployeeId(SharedData.currentEmployee.getID());
-                shipmentRecord.setTransactionId(TransactionRecord.lastTransactionID++);
-                shipmentRecord.setType("Purchase");
-                generatedReceipt.setText(shipmentRecord + "\n\n Additional Notes: " + additionalNotes.getText());
+        generateRecieptButton.addActionListener(e -> {
+            if(SharedData.selectedMedicine != null) {
+                shipmentRecord.addMedicine(SharedData.selectedMedicine.getName(), SharedData.selectedMedicine.getQty(), SharedData.selectedMedicine.getPrice());
+                shipmentRecord.addToTotalPrice(SharedData.selectedMedicine.getQty() * SharedData.selectedMedicine.getPrice());
+                SharedData.selectedMedicine = null;
             }
+
+            shipmentRecord.setEmployeeId(SharedData.currentEmployee.getID());
+            shipmentRecord.setTransactionId(TransactionRecord.lastTransactionID++);
+            shipmentRecord.setType("Purchase");
+            generatedReceipt.setText(shipmentRecord + "\n\n Additional Notes: " + additionalNotes.getText());
         });
 
-        registerTransactionButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                shipmentRecord = new TransactionRecord();
-                generatedReceipt.setText("");
-            }
+        registerTransactionButton.addActionListener(e -> {
+            shipmentRecord = new TransactionRecord();
+            generatedReceipt.setText("");
         });
 
-        cancelTransactionButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                shipmentRecord = new TransactionRecord();
-                generatedReceipt.setText("");
-            }
+        cancelTransactionButton.addActionListener(e -> {
+            shipmentRecord = new TransactionRecord();
+            generatedReceipt.setText("");
         });
     }
 }

@@ -8,10 +8,12 @@ import java.util.Locale;
 
 class TransactedMedicine {
     String medicineName;
+    float price;
     int qty;
 
-    TransactedMedicine(String medicine, int qty){
+    TransactedMedicine(String medicine, int qty, float prc){
         this.medicineName = medicine;
+        this.price = prc;
         this.qty = qty;
     }
 
@@ -51,8 +53,8 @@ public class TransactionRecord {
         this.employeeId = employeeId;
     }
 
-    public void addMedicine(String name, int quantity){
-        medicines.add(new TransactedMedicine(name, quantity));
+    public void addMedicine(String name, int quantity, float price){
+        medicines.add(new TransactedMedicine(name, quantity, price));
     }
 
     @Override

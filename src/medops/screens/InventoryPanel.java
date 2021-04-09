@@ -14,6 +14,7 @@ public class InventoryPanel {
     DefaultListModel<Medicine> tempList;
     private JTextArea medicineDetailsTextArea;
     private JButton updateButton;
+    private JButton addMedicineButton;
 
     public InventoryPanel(){
         tempList = new DefaultListModel<>();
