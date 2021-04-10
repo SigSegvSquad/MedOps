@@ -12,5 +12,12 @@
     "name": "Test Employee",
     "id": 2,
     "salary": 10000
+  },
+  "admin": {
+    "is_admin": true,
+    "password": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+    "name": "admin",
+    "id": 3,
+    "salary": 100000
   }
 }

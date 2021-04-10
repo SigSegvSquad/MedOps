@@ -14,7 +14,7 @@ public class EmployeePanel {
     private JButton addEmployeeButton;
     private JButton updateEmployeeDetailsButton;
 
-    public EmployeePanel(){
+    private void setEmpList(){
         tempList = new DefaultListModel<>();
 
         for(int i=0;i<EmployeeScreen.storeRecord.employeeList.size();i++){
@@ -34,6 +34,11 @@ public class EmployeePanel {
 
             textArea1.setText(empInfo);
         });
+    }
+
+    public EmployeePanel(){
+
+        setEmpList();
 
        addEmployeeButton.addActionListener(new ActionListener() {
             @Override
@@ -48,6 +53,13 @@ public class EmployeePanel {
                 addEmployeeFrame.setLocationRelativeTo(null);
             }
         });
+
+       updateEmployeeDetailsButton.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+               setEmpList();
+           }
+       });
 
     }
 

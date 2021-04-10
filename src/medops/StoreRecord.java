@@ -120,20 +120,23 @@ public class StoreRecord {
             userInfo.put("id",employeeList.get(i).getID());
             userInfo.put("name",employeeList.get(i).getName());
             userInfo.put("password",employeeList.get(i).getPassword());
-            userInfo.put("is_admin",false);
+            if(employeeList.get(i).isAdmin)
+                userInfo.put("is_admin",true);
+            else
+                userInfo.put("is_admin",false);
             userInfo.put("salary",employeeList.get(i).getSalaryInRupees());
             usersJson.put(employeeList.get(i).getUsername(), userInfo);
         }
 
-        for(int i=0;i<managerList.size();i++){
-            JSONObject userInfo = new JSONObject();
-            userInfo.put("id",managerList.get(i).getID());
-            userInfo.put("name",managerList.get(i).getName());
-            userInfo.put("password",managerList.get(i).getPassword());
-            userInfo.put("is_admin",true);
-            userInfo.put("salary",managerList.get(i).getSalaryInRupees());
-            usersJson.put(managerList.get(i).getUsername(), userInfo);
-        }
+//        for(int i=0;i<managerList.size();i++){
+//            JSONObject userInfo = new JSONObject();
+//            userInfo.put("id",managerList.get(i).getID());
+//            userInfo.put("name",managerList.get(i).getName());
+//            userInfo.put("password",managerList.get(i).getPassword());
+//            userInfo.put("is_admin",true);
+//            userInfo.put("salary",managerList.get(i).getSalaryInRupees());
+//            usersJson.put(managerList.get(i).getUsername(), userInfo);
+//        }
 
 
         try {
