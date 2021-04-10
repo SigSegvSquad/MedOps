@@ -58,6 +58,7 @@ public class InventoryPanel {
                 addMedicineFrame.setContentPane(addNewMedicine.panel);
                 addMedicineFrame.setSize(400, 200);
                 addMedicineFrame.setVisible(true);
+                addMedicineFrame.setLocationRelativeTo(null);
             }
         });
     }

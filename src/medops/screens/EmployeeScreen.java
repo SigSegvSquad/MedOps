@@ -29,6 +29,7 @@ public class EmployeeScreen {
         employeeScreen.setSize(width + (2*padding), height + (4*padding));
         employeeScreen.setLayout(null);
         employeeScreen.setVisible(true);
+        employeeScreen.setLocationRelativeTo(null);
 
         // On window closing
         employeeScreen.addWindowListener(new WindowAdapter() {

@@ -31,6 +31,7 @@ public class ShipmentPanel {
             selectMedicineFrame.setContentPane(selectMedicine.panel);
             selectMedicineFrame.setSize(400, 200);
             selectMedicineFrame.setVisible(true);
+            selectMedicineFrame.setLocationRelativeTo(null);
         });
 
         generateRecieptButton.addActionListener(e -> {
