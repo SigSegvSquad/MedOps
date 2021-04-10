@@ -1,10 +1,7 @@
 package medops.screens;
 
 import medops.Medicine;
-
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class AddNewMedicine {
     private JButton addNewMedicineButton;
@@ -15,13 +12,28 @@ public class AddNewMedicine {
 
     public AddNewMedicine() {
         addNewMedicineButton.addActionListener(e -> {
-            String name = nameField.getText();
-            int price = Integer.parseInt(priceField.getText());
-            Medicine newMedicine = new Medicine(Medicine.lastID++, name, 0, price);
-            EmployeeScreen.storeRecord.medicineList.add(newMedicine);
+            if (nameField.getText().equals("")) {
+                System.out.println("Medicine Name is empty, try again");
+            } else if (priceField.getText().equals("")) {
+                System.out.println("Medicine Price is empty, try again");
+            } else {
+                try {
+                    String name = nameField.getText();
+                    int price = Integer.parseInt(priceField.getText());
 
-            JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(panel);
-            topFrame.dispose();
+                    Medicine newMedicine = new Medicine(Medicine.lastID++, name, 0, price);
+                    EmployeeScreen.storeRecord.medicineList.add(newMedicine);
+
+                    System.out.println("Succesfully Added " + name + " to the medicine list");
+
+                    JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(panel);
+                    topFrame.dispose();
+                } catch (Exception textException) {
+                    System.out.println("Error in adding New Medicine, please try again");
+                    nameField.setText("");
+                    priceField.setText("");
+                }
+            }
         });
     }
 }

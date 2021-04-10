@@ -24,6 +24,7 @@ public class SelectMedicine {
             addMedicineFrame.setContentPane(addNewMedicine.panel);
             addMedicineFrame.setSize(400, 200);
             addMedicineFrame.setVisible(true);
+            addMedicineFrame.setLocationRelativeTo(null);
 
             JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(panel);
             topFrame.dispose();

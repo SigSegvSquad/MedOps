@@ -45,6 +45,7 @@ public class EmployeePanel {
                 addEmployeeFrame.setContentPane(addEmployee.addEmployeePanel);
                 addEmployeeFrame.setSize(400, 200);
                 addEmployeeFrame.setVisible(true);
+                addEmployeeFrame.setLocationRelativeTo(null);
             }
         });
 

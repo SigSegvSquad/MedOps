@@ -36,15 +36,21 @@ public class InventoryPanel {
         });
 
         updateButton.addActionListener(e -> {
-            DefaultListModel<Medicine> tempList = new DefaultListModel<>();
-            for (int i = 0; i < EmployeeScreen.storeRecord.medicineList.size(); i++) {
-                Medicine medicine = EmployeeScreen.storeRecord.medicineList.get(i);
-                tempList.addElement(medicine);
-            }
+            try {
+                DefaultListModel<Medicine> tempList = new DefaultListModel<>();
+                for (int i = 0; i < EmployeeScreen.storeRecord.medicineList.size(); i++) {
+                    Medicine medicine = EmployeeScreen.storeRecord.medicineList.get(i);
+                    tempList.addElement(medicine);
+                }
 
-            if (tempList.size() > medicineDefaultListModel.size()) {
-                medicineDefaultListModel = tempList;
-                list1.setModel(medicineDefaultListModel);
+                if (tempList.size() > medicineDefaultListModel.size()) {
+                    medicineDefaultListModel = tempList;
+                    list1.setModel(medicineDefaultListModel);
+                }
+
+                System.out.println("Inventory updated succesfully");
+            } catch (ArrayIndexOutOfBoundsException exception){
+                System.out.println("Array Exception: " + exception.getMessage());
             }
         });
 
@@ -58,6 +64,7 @@ public class InventoryPanel {
                 addMedicineFrame.setContentPane(addNewMedicine.panel);
                 addMedicineFrame.setSize(400, 200);
                 addMedicineFrame.setVisible(true);
+                addMedicineFrame.setLocationRelativeTo(null);
             }
         });
     }
