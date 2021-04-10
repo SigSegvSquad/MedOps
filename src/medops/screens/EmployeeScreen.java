@@ -1,5 +1,6 @@
 package medops.screens;
 
+import medops.SharedData;
 import medops.StoreRecord;
 
 import javax.swing.*;
@@ -22,7 +23,8 @@ public class EmployeeScreen {
         employeeTabbedPane.add("Sale", new SalesPanel().salesPanel);
         employeeTabbedPane.add("Shipment", new ShipmentPanel().shipmentPanel);
         employeeTabbedPane.add("Inventory", new InventoryPanel().inventoryPanel);
-        employeeTabbedPane.add("Manage Employees", new EmployeePanel().employeePanel);
+        if(SharedData.currentEmployee.isAdmin)
+            employeeTabbedPane.add("Manage Employees", new EmployeePanel().employeePanel);
         employeeTabbedPane.add("Current Shift", new EmployeeDetails().detailsPanel);
 
         employeeScreen.add(employeeTabbedPane);

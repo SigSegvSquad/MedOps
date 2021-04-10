@@ -39,11 +39,12 @@ public class Employee {
     private final String name;
     private final int salaryInRupees;
 
-    public Employee(int id, String username, String name, String password, int salary){
+    public Employee(int id, String username, String name, String password, int salary, boolean isAdmin){
         this.ID = id;
         this.username = username;
         this.name = name;
         this.password = password;
         this.salaryInRupees = salary;
+        this.isAdmin = isAdmin;
     }
 }

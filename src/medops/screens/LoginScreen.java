@@ -66,7 +66,7 @@ public class LoginScreen {
                         if ((boolean) employee.get("is_admin")) {
                             //TODO: create CurrentManager?
                         }
-                        SharedData.currentEmployee = new Employee((int) employee.get("id"), keyStr, (String) employee.get("name"), (String) employee.get("password"), (int) employee.get("salary"));
+                        SharedData.currentEmployee = new Employee((int) employee.get("id"), keyStr, (String) employee.get("name"), (String) employee.get("password"), (int) employee.get("salary"), (boolean) employee.get("is_admin"));
                     });
 
                     System.out.println("Employee " + employee.get("name") + " has logged in at " + new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));

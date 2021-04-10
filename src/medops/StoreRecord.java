@@ -39,7 +39,7 @@ public class StoreRecord {
                 if ((boolean)employee.get("is_admin")) {
                     managerList.add(new Manager((int) employee.get("id"), keyStr, (String) employee.get("name"), (String) employee.get("password"), (int) employee.get("salary")));
                 }
-                employeeList.add(new Employee((int) employee.get("id"), keyStr, (String) employee.get("name"), (String) employee.get("password"), (int) employee.get("salary")));
+                employeeList.add(new Employee((int) employee.get("id"), keyStr, (String) employee.get("name"), (String) employee.get("password"), (int) employee.get("salary"), (boolean) employee.get("is_admin")));
             });
 
             System.out.println("* Loaded Employee List from Memory");
