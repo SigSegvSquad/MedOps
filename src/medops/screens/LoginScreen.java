@@ -35,6 +35,7 @@ public class LoginScreen {
         placeComponents(panel);
 
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
     }
 
     private String getFileString(FileReader fileObj) throws IOException {

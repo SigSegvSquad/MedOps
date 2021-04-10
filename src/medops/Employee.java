@@ -1,29 +1,5 @@
 package medops;
 
-class Shift{
-    int shiftDurationMinutes;
-    int shiftStartTime;
-    int shiftEndTime;
-
-    Shift(int duration, int start, int end){
-        this.shiftDurationMinutes = duration;
-        this.shiftStartTime = start;
-        this.shiftEndTime = end;
-    }
-
-    boolean isShiftOver(){
-        return true;
-    }
-
-    void startShift(){
-
-    }
-
-    void endShift() {
-
-    }
-}
-
 public class Employee {
 
     @Override
@@ -56,6 +32,7 @@ public class Employee {
     }
 
     private final int ID;
+    public boolean isAdmin = false;
     private final String username;
     private String shift;
     private final String password;
