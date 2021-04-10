@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -59,7 +60,9 @@ public class LoginScreen {
                 String userDataStr = usersData.get(username).toString();
                 JSONObject employee = (JSONObject) new JSONTokener(userDataStr).nextValue();
 
-                if (employee.get("password").toString().equals(password)) {
+                String hashedPassword = sha256(password);
+                System.out.println(hashedPassword);
+                if (hashedPassword.equals(employee.get("password"))) {
                     frame.dispose();
                     usersData.keySet().forEach(keyStr ->
                     {
@@ -83,6 +86,23 @@ public class LoginScreen {
         }
     }
 
+    public static String sha256(final String base) {
+        final StringBuilder hexString = new StringBuilder();
+        try{
+            final MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            final byte[] hash = digest.digest(base.getBytes("UTF-8"));
+            for (byte b : hash) {
+                final String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1)
+                    hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch(Exception ex){
+            System.out.println(ex.getMessage());
+            return hexString.toString();
+        }
+    }
 
     private void placeComponents(JPanel panel) {
         panel.setLayout(null);

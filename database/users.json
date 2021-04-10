@@ -1,1 +1,16 @@
-{"op":{"is_admin":true,"password":"yodadagay","name":"Im Gae","id":1,"salary":10000},"a":{"is_admin":false,"password":"a","name":"Test Employee","id":2,"salary":10000},"admin":{"is_admin":false,"password":"yomamagay","name":"You Gae","id":0,"salary":20000}}
+{
+  "op": {
+    "is_admin": true,
+    "password": "c4f5cdccb31452cbd0ec91a29ae5ac042d51badcc49bd5930219dc456504246d",
+    "name": "Im Gae",
+    "id": 1,
+    "salary": 10000
+  },
+  "a": {
+    "is_admin": false,
+    "password": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+    "name": "Test Employee",
+    "id": 2,
+    "salary": 10000
+  }
+}
