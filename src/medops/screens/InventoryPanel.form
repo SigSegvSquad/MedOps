@@ -52,7 +52,7 @@
           </grid>
         </constraints>
         <properties>
-          <font name="Courier" size="16"/>
+          <font name="Courier" size="18"/>
           <text value="Medicine Details"/>
         </properties>
       </component>

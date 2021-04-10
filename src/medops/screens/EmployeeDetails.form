@@ -15,6 +15,7 @@
           </grid>
         </constraints>
         <properties>
+          <font name="DialogInput" size="18"/>
           <text value=""/>
         </properties>
       </component>
