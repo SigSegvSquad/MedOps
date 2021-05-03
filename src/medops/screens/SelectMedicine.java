@@ -14,6 +14,7 @@ public class SelectMedicine {
     public JPanel panel;
     private JButton addNewMedicineButton;
     private JTextField AmountField;
+    private JCheckBox exchangeForExpiredMedicineCheckBox;
 
     public SelectMedicine(TransactionRecord transactionRecord) {
         addNewMedicineButton.addActionListener(e -> {
@@ -40,8 +41,14 @@ public class SelectMedicine {
             }
 
             if(SharedData.selectedMedicine != null) {
-                transactionRecord.addMedicine(SharedData.selectedMedicine.getName(), SharedData.selectedMedicine.getQty(), SharedData.selectedMedicine.getPrice());
-                transactionRecord.addToTotalPrice(SharedData.selectedMedicine.getQty() * SharedData.selectedMedicine.getPrice());
+                if(!exchangeForExpiredMedicineCheckBox.isSelected()) {
+                    transactionRecord.addMedicine(SharedData.selectedMedicine.getName(), SharedData.selectedMedicine.getQty(), SharedData.selectedMedicine.getPrice());
+                    transactionRecord.addToTotalPrice(SharedData.selectedMedicine.getQty() * SharedData.selectedMedicine.getPrice());
+                }
+                else {
+                    transactionRecord.addMedicine(SharedData.selectedMedicine.getName(), SharedData.selectedMedicine.getQty(), 0);
+                    transactionRecord.addToTotalPrice(0);
+                }
                 SharedData.selectedMedicine = null;
             }
 

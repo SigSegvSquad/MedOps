@@ -18,6 +18,7 @@ public class SalesPanel {
     private JButton generateRecieptButton;
     private JTextArea additionalNotes;
     private JLabel employeeName;
+    private JCheckBox addToHospitalBillCheckBox;
 
     public SalesPanel() {
         addMedicineButton.addActionListener(new ActionListener() {
