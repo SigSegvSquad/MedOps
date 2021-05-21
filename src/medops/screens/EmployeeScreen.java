@@ -7,6 +7,14 @@ import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+class AutoSave implements Runnable{
+    @Override
+    public void run() {
+        System.out.println("Starting AutoSave in Thread");
+        EmployeeScreen.storeRecord.autoSave();
+    }
+}
+
 public class EmployeeScreen {
     boolean isManager;
     int width = 1000;
@@ -37,7 +45,8 @@ public class EmployeeScreen {
         employeeScreen.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                storeRecord.autoSave();
+                Thread autoSave = new Thread(new AutoSave());
+                autoSave.start();
             }
         });
     }

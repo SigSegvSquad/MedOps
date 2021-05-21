@@ -128,17 +128,6 @@ public class StoreRecord {
             usersJson.put(employeeList.get(i).getUsername(), userInfo);
         }
 
-//        for(int i=0;i<managerList.size();i++){
-//            JSONObject userInfo = new JSONObject();
-//            userInfo.put("id",managerList.get(i).getID());
-//            userInfo.put("name",managerList.get(i).getName());
-//            userInfo.put("password",managerList.get(i).getPassword());
-//            userInfo.put("is_admin",true);
-//            userInfo.put("salary",managerList.get(i).getSalaryInRupees());
-//            usersJson.put(managerList.get(i).getUsername(), userInfo);
-//        }
-
-
         try {
             FileWriter file = new FileWriter(System.getProperty("user.dir")+ File.separator+"database/users.json");
             file.write(usersJson.toString());
