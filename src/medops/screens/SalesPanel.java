@@ -49,7 +49,7 @@ public class SalesPanel {
         });
 
         registerTransactionButton.addActionListener(e -> {
-            if(SharedData.processTransaction(salesRecord)){
+            if (SharedData.processTransaction(salesRecord)) {
                 EmployeeScreen.storeRecord.transactionRecordList.add(salesRecord);
                 generatedReceipt.setText("");
             } else {

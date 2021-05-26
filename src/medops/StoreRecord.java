@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
 
 
 public class StoreRecord {
@@ -36,7 +36,7 @@ public class StoreRecord {
             employeeData.keySet().forEach(keyStr ->
             {
                 JSONObject employee = (JSONObject) employeeData.get(keyStr);
-                if ((boolean)employee.get("is_admin")) {
+                if ((boolean) employee.get("is_admin")) {
                     managerList.add(new Manager((int) employee.get("id"), keyStr, (String) employee.get("name"), (String) employee.get("password"), (int) employee.get("salary")));
                 }
                 employeeList.add(new Employee((int) employee.get("id"), keyStr, (String) employee.get("name"), (String) employee.get("password"), (int) employee.get("salary"), (boolean) employee.get("is_admin")));
@@ -78,10 +78,10 @@ public class StoreRecord {
 
                 JSONArray transactedMedsJson = (JSONArray) transaction.get("medicines");
                 ArrayList<TransactedMedicine> transactedMeds = new ArrayList<>();
-                for(int j=0;j<transactedMedsJson.length();j++){
-                    transactedMeds.add(new TransactedMedicine((String)transactedMedsJson.getJSONObject(j).get("name"),(int)transactedMedsJson.getJSONObject(j).get("qty"), (int)transactedMedsJson.getJSONObject(j).get("price")));
+                for (int j = 0; j < transactedMedsJson.length(); j++) {
+                    transactedMeds.add(new TransactedMedicine((String) transactedMedsJson.getJSONObject(j).get("name"), (int) transactedMedsJson.getJSONObject(j).get("qty"), (int) transactedMedsJson.getJSONObject(j).get("price")));
                 }
-                transactionRecordList.add(new TransactionRecord((int)transaction.get("id"),(String)transaction.get("type"),transactedMeds,(String)transaction.get("time"),(int)transaction.get("amount"),(int)transaction.get("employeeId")));
+                transactionRecordList.add(new TransactionRecord((int) transaction.get("id"), (String) transaction.get("type"), transactedMeds, (String) transaction.get("time"), (int) transaction.get("amount"), (int) transaction.get("employeeId")));
             }
 
             System.out.println("* Loaded Transaction List from Memory");
@@ -112,24 +112,21 @@ public class StoreRecord {
         return output.toString();
     }
 
-    public void autoSave(){
+    public void autoSave() {
         // Saves data in users.json
         JSONObject usersJson = new JSONObject();
-        for(int i=0;i<employeeList.size();i++){
+        for (int i = 0; i < employeeList.size(); i++) {
             JSONObject userInfo = new JSONObject();
-            userInfo.put("id",employeeList.get(i).getID());
-            userInfo.put("name",employeeList.get(i).getName());
-            userInfo.put("password",employeeList.get(i).getPassword());
-            if(employeeList.get(i).isAdmin)
-                userInfo.put("is_admin",true);
-            else
-                userInfo.put("is_admin",false);
-            userInfo.put("salary",employeeList.get(i).getSalaryInRupees());
+            userInfo.put("id", employeeList.get(i).getID());
+            userInfo.put("name", employeeList.get(i).getName());
+            userInfo.put("password", employeeList.get(i).getPassword());
+            userInfo.put("is_admin", employeeList.get(i).isAdmin);
+            userInfo.put("salary", employeeList.get(i).getSalaryInRupees());
             usersJson.put(employeeList.get(i).getUsername(), userInfo);
         }
 
         try {
-            FileWriter file = new FileWriter(System.getProperty("user.dir")+ File.separator+"database/users.json");
+            FileWriter file = new FileWriter(System.getProperty("user.dir") + File.separator + "database/users.json");
             file.write(usersJson.toString());
             file.close();
         } catch (IOException e) {
@@ -140,7 +137,7 @@ public class StoreRecord {
         // Saves medicine data in medicines.json
         JSONObject medicinesJson = new JSONObject();
         JSONArray medecineArray = new JSONArray();
-        for(int i=0;i<medicineList.size();i++){
+        for (int i = 0; i < medicineList.size(); i++) {
             JSONObject medicine = new JSONObject();
             medicine.put("id", medicineList.get(i).getId());
             medicine.put("name", medicineList.get(i).getName());
@@ -150,7 +147,7 @@ public class StoreRecord {
         }
         medicinesJson.put("medicineArray", medecineArray);
         try {
-            FileWriter file = new FileWriter(System.getProperty("user.dir")+ File.separator+"database/medicines.json");
+            FileWriter file = new FileWriter(System.getProperty("user.dir") + File.separator + "database/medicines.json");
             file.write(medicinesJson.toString());
             file.close();
         } catch (IOException e) {
@@ -160,15 +157,15 @@ public class StoreRecord {
         // Saves transaction data in transactions.json
         JSONObject transactionRecordJson = new JSONObject();
         JSONArray transactionArray = new JSONArray();
-        for(int i=0;i<transactionRecordList.size();i++){
+        for (int i = 0; i < transactionRecordList.size(); i++) {
             JSONObject transactionInfo = new JSONObject();
 
             JSONArray transactedMeds = new JSONArray();
-            for(int j=0;j<transactionRecordList.get(i).getMedicines().size();j++){
+            for (int j = 0; j < transactionRecordList.get(i).getMedicines().size(); j++) {
                 JSONObject medObj = new JSONObject();
-                medObj.put("name",transactionRecordList.get(i).getMedicines().get(j).medicineName);
-                medObj.put("qty",transactionRecordList.get(i).getMedicines().get(j).qty);
-                medObj.put("price",transactionRecordList.get(i).getMedicines().get(j).price);
+                medObj.put("name", transactionRecordList.get(i).getMedicines().get(j).medicineName);
+                medObj.put("qty", transactionRecordList.get(i).getMedicines().get(j).qty);
+                medObj.put("price", transactionRecordList.get(i).getMedicines().get(j).price);
                 transactedMeds.put(medObj);
             }
 
@@ -181,10 +178,10 @@ public class StoreRecord {
 
             transactionArray.put(transactionInfo);
         }
-        transactionRecordJson.put("transactionsArray",transactionArray);
+        transactionRecordJson.put("transactionsArray", transactionArray);
 
         try {
-            FileWriter file = new FileWriter(System.getProperty("user.dir")+ File.separator+"database/transactions.json");
+            FileWriter file = new FileWriter(System.getProperty("user.dir") + File.separator + "database/transactions.json");
             file.write(transactionRecordJson.toString());
             file.close();
         } catch (IOException e) {
@@ -197,7 +194,7 @@ public class StoreRecord {
         storeInfo.put("balance", balance);
 
         try {
-            FileWriter file = new FileWriter(System.getProperty("user.dir")+ File.separator+"database/storeRecord.json");
+            FileWriter file = new FileWriter(System.getProperty("user.dir") + File.separator + "database/storeRecord.json");
             file.write(storeInfo.toString());
             file.close();
         } catch (IOException e) {

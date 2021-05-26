@@ -8,8 +8,8 @@ import java.awt.event.ActionListener;
 
 public class InventoryPanel {
     public JPanel inventoryPanel;
-    private JList<Medicine> list1;
     DefaultListModel<Medicine> medicineDefaultListModel;
+    private JList<Medicine> list1;
     private JTextArea medicineDetailsTextArea;
     private JButton updateButton;
     private JButton addMedicineButton;
@@ -49,7 +49,7 @@ public class InventoryPanel {
                 }
 
                 System.out.println("Inventory updated succesfully");
-            } catch (ArrayIndexOutOfBoundsException exception){
+            } catch (ArrayIndexOutOfBoundsException exception) {
                 System.out.println("Array Exception: " + exception.getMessage());
             }
         });

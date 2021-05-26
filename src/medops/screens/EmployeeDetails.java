@@ -7,8 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class EmployeeDetails {
-    private JTextArea currEmployeeDetails;
     public JPanel detailsPanel;
+    private JTextArea currEmployeeDetails;
     private JButton endShiftAndLogoutButton;
 
     public EmployeeDetails() {

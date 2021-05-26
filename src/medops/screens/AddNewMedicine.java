@@ -1,13 +1,14 @@
 package medops.screens;
 
 import medops.Medicine;
+
 import javax.swing.*;
 
 public class AddNewMedicine {
+    public JPanel panel;
     private JButton addNewMedicineButton;
     private JTextField nameField;
     private JTextField priceField;
-    public JPanel panel;
 
 
     public AddNewMedicine() {

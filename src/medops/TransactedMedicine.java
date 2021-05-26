@@ -5,6 +5,12 @@ public class TransactedMedicine {
     float price;
     int qty;
 
+    TransactedMedicine(String medicine, int qty, float prc) {
+        this.medicineName = medicine;
+        this.price = prc;
+        this.qty = qty;
+    }
+
     public String getMedicineName() {
         return medicineName;
     }
@@ -17,13 +23,7 @@ public class TransactedMedicine {
         return qty;
     }
 
-    TransactedMedicine(String medicine, int qty, float prc){
-        this.medicineName = medicine;
-        this.price = prc;
-        this.qty = qty;
-    }
-
-    public String getFormattedAmount(int width){
+    public String getFormattedAmount(int width) {
         StringBuilder result = new StringBuilder();
         String quantity = Integer.toString(qty);
 

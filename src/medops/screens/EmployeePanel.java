@@ -14,33 +14,11 @@ public class EmployeePanel {
     private JButton addEmployeeButton;
     private JButton updateEmployeeDetailsButton;
 
-    private void setEmpList(){
-        tempList = new DefaultListModel<>();
-
-        for(int i=0;i<EmployeeScreen.storeRecord.employeeList.size();i++){
-            tempList.addElement(EmployeeScreen.storeRecord.employeeList.get(i));
-        }
-
-        list1.setModel(tempList);
-
-        list1.addListSelectionListener(e->{
-            int idxOfSelectedEmp = list1.getSelectedIndex();
-
-            String newLine = System.getProperty("line.separator");
-
-            String empInfo = tempList.get(idxOfSelectedEmp).getName()+
-                    newLine+
-                    "Salary: " + tempList.get(idxOfSelectedEmp).getSalaryInRupees();
-
-            textArea1.setText(empInfo);
-        });
-    }
-
-    public EmployeePanel(){
+    public EmployeePanel() {
 
         setEmpList();
 
-       addEmployeeButton.addActionListener(new ActionListener() {
+        addEmployeeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 AddEmployee addEmployee = new AddEmployee();
@@ -54,13 +32,35 @@ public class EmployeePanel {
             }
         });
 
-       updateEmployeeDetailsButton.addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               setEmpList();
-           }
-       });
+        updateEmployeeDetailsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setEmpList();
+            }
+        });
 
+    }
+
+    private void setEmpList() {
+        tempList = new DefaultListModel<>();
+
+        for (int i = 0; i < EmployeeScreen.storeRecord.employeeList.size(); i++) {
+            tempList.addElement(EmployeeScreen.storeRecord.employeeList.get(i));
+        }
+
+        list1.setModel(tempList);
+
+        list1.addListSelectionListener(e -> {
+            int idxOfSelectedEmp = list1.getSelectedIndex();
+
+            String newLine = System.getProperty("line.separator");
+
+            String empInfo = tempList.get(idxOfSelectedEmp).getName() +
+                    newLine +
+                    "Salary: " + tempList.get(idxOfSelectedEmp).getSalaryInRupees();
+
+            textArea1.setText(empInfo);
+        });
     }
 
 }

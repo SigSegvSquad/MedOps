@@ -15,14 +15,14 @@ public class AddEmployee {
     private JButton addEmployeeButton;
     private JPasswordField setPassword;
 
-    public AddEmployee(){
+    public AddEmployee() {
         isAdmin.addItem("No");
         isAdmin.addItem("Yes");
 
         addEmployeeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int id = EmployeeScreen.storeRecord.employeeList.size()+1;
+                int id = EmployeeScreen.storeRecord.employeeList.size() + 1;
                 String name = setName.getText();
                 String username = setUsername.getText();
                 String password = LoginScreen.sha256(String.valueOf(setPassword.getPassword()));

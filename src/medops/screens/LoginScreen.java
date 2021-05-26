@@ -1,27 +1,21 @@
 package medops.screens;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
+import medops.Employee;
+import medops.SharedData;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import medops.Employee;
-import medops.Manager;
-import medops.SharedData;
-import org.json.JSONException;
-import org.json.JSONTokener;
-import org.json.JSONObject;
 
 public class LoginScreen {
     JFrame frame;
@@ -37,6 +31,24 @@ public class LoginScreen {
 
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
+    }
+
+    public static String sha256(final String base) {
+        final StringBuilder hexString = new StringBuilder();
+        try {
+            final MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            final byte[] hash = digest.digest(base.getBytes(StandardCharsets.UTF_8));
+            for (byte b : hash) {
+                final String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1)
+                    hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return hexString.toString();
+        }
     }
 
     private String getFileString(FileReader fileObj) throws IOException {
@@ -83,24 +95,6 @@ public class LoginScreen {
             }
         } catch (IOException e) {
             System.out.println("Failed to read!");
-        }
-    }
-
-    public static String sha256(final String base) {
-        final StringBuilder hexString = new StringBuilder();
-        try{
-            final MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            final byte[] hash = digest.digest(base.getBytes("UTF-8"));
-            for (byte b : hash) {
-                final String hex = Integer.toHexString(0xff & b);
-                if (hex.length() == 1)
-                    hexString.append('0');
-                hexString.append(hex);
-            }
-            return hexString.toString();
-        } catch(Exception ex){
-            System.out.println(ex.getMessage());
-            return hexString.toString();
         }
     }
 

@@ -8,14 +8,14 @@ public class Medicine {
     private float price;
     private int qty;
 
-    public Medicine(int id, String name, int quantity, int price){
+    public Medicine(int id, String name, int quantity, int price) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.qty = quantity;
     }
 
-    public Medicine(Medicine medicine){
+    public Medicine(Medicine medicine) {
         this.id = medicine.id;
         this.name = medicine.name;
         this.price = medicine.price;

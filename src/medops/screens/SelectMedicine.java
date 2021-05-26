@@ -2,16 +2,14 @@ package medops.screens;
 
 import medops.Medicine;
 import medops.SharedData;
-import medops.TransactedMedicine;
 import medops.TransactionRecord;
 
 import javax.swing.*;
-import java.util.ArrayList;
 
 public class SelectMedicine {
+    public JPanel panel;
     private JComboBox<Medicine> medicineList;
     private JButton doneButton;
-    public JPanel panel;
     private JButton addNewMedicineButton;
     private JTextField AmountField;
     private JCheckBox exchangeForExpiredMedicineCheckBox;
@@ -33,19 +31,18 @@ public class SelectMedicine {
 
         doneButton.addActionListener(e -> {
             SharedData.selectedMedicine = (Medicine) medicineList.getSelectedItem();
-            if(!AmountField.getText().equals("")) {
+            if (!AmountField.getText().equals("")) {
                 SharedData.selectedMedicine.setQty(Integer.parseInt(AmountField.getText()));
             } else {
                 AmountField.setText("Enter Amount");
                 return;
             }
 
-            if(SharedData.selectedMedicine != null) {
-                if(!exchangeForExpiredMedicineCheckBox.isSelected()) {
+            if (SharedData.selectedMedicine != null) {
+                if (!exchangeForExpiredMedicineCheckBox.isSelected()) {
                     transactionRecord.addMedicine(SharedData.selectedMedicine.getName(), SharedData.selectedMedicine.getQty(), SharedData.selectedMedicine.getPrice());
                     transactionRecord.addToTotalPrice(SharedData.selectedMedicine.getQty() * SharedData.selectedMedicine.getPrice());
-                }
-                else {
+                } else {
                     transactionRecord.addMedicine(SharedData.selectedMedicine.getName(), SharedData.selectedMedicine.getQty(), 0);
                     transactionRecord.addToTotalPrice(0);
                 }

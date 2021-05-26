@@ -4,10 +4,6 @@ import medops.SharedData;
 import medops.TransactionRecord;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 public class ShipmentPanel {
     public TransactionRecord shipmentRecord = new TransactionRecord();
@@ -35,7 +31,7 @@ public class ShipmentPanel {
         });
 
         generateRecieptButton.addActionListener(e -> {
-            if(SharedData.selectedMedicine != null) {
+            if (SharedData.selectedMedicine != null) {
                 shipmentRecord.addMedicine(SharedData.selectedMedicine.getName(), SharedData.selectedMedicine.getQty(), SharedData.selectedMedicine.getPrice());
                 shipmentRecord.addToTotalPrice(SharedData.selectedMedicine.getQty() * SharedData.selectedMedicine.getPrice());
                 SharedData.selectedMedicine = null;
@@ -48,7 +44,7 @@ public class ShipmentPanel {
         });
 
         registerTransactionButton.addActionListener(e -> {
-            if(SharedData.processTransaction(shipmentRecord)){
+            if (SharedData.processTransaction(shipmentRecord)) {
                 EmployeeScreen.storeRecord.transactionRecordList.add(shipmentRecord);
                 generatedReceipt.setText("");
             } else {

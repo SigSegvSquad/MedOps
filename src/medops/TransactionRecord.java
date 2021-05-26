@@ -8,20 +8,19 @@ import java.util.Locale;
 
 public class TransactionRecord {
     public static int lastTransactionID = 0;
-
-    private int transactionId;
     public String type;
     public ArrayList<TransactedMedicine> medicines = new ArrayList<>();
+    public int employeeId;
+    private int transactionId;
     private String timeOfPurchase;
     private float totalPrice;
-    public int employeeId;
 
-    public TransactionRecord(){
+    public TransactionRecord() {
         timeOfPurchase = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
         totalPrice = 0;
     }
 
-    public TransactionRecord(int transactionId, String type, ArrayList<TransactedMedicine> medicines, String timeOfPurchase, int totalPrice, int employeeId){
+    public TransactionRecord(int transactionId, String type, ArrayList<TransactedMedicine> medicines, String timeOfPurchase, int totalPrice, int employeeId) {
         this.transactionId = transactionId;
         this.type = type;
         this.medicines = medicines;
@@ -30,12 +29,12 @@ public class TransactionRecord {
         this.employeeId = employeeId;
     }
 
-    public void addMedicine(String name, int quantity, float price){
+    public void addMedicine(String name, int quantity, float price) {
         medicines.add(new TransactedMedicine(name, quantity, price));
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder result = new StringBuilder();
         String price = Float.toString(totalPrice);
         int width = 60;
@@ -45,7 +44,7 @@ public class TransactionRecord {
         result.append("Transaction Time   : ").append(timeOfPurchase).append("\n");
         result.append("Employee ID        : ").append(employeeId).append("\n\n\n");
 
-        for(TransactedMedicine medicine: medicines){
+        for (TransactedMedicine medicine : medicines) {
             result.append(medicine.getFormattedAmount(width)).append("\n");
         }
         result.append("\n");
@@ -88,7 +87,7 @@ public class TransactionRecord {
     }
 
     public void addToTotalPrice(float price) {
-        if(price > 0) {
+        if (price > 0) {
             this.totalPrice += price;
         }
     }
