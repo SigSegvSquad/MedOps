@@ -15,6 +15,8 @@ public class InventoryPanel {
     private JButton addMedicineButton;
 
     public InventoryPanel() {
+
+
         medicineDefaultListModel = new DefaultListModel<>();
         for (int i = 0; i < EmployeeScreen.storeRecord.medicineList.size(); i++) {
             Medicine medicine = EmployeeScreen.storeRecord.medicineList.get(i);
